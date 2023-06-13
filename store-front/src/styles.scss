@@ -1,0 +1,100 @@
+$PrimaryColor :#1E805D;
+.getStarted svg{
+    width: 16px;
+}
+.carousel{
+    height: 100% !important;
+  }
+  .footer-bidw{
+      height: 90px;
+      overflow-y: scroll;
+  }
+  .footer-bidw::-webkit-scrollbar {
+    display: none;
+  }
+  .login-page{
+      padding: 20px;
+  }
+  @media screen and (max-width: 900px){
+      .login-page{
+          padding: 0px !important;
+      }
+      .body-bids h3{
+        display: inline-block !important; 
+      }
+      .border-right:before ,.menue{
+        display: none;
+      }
+  }
+  @media screen and (max-width: 1300px){
+    .border-right:before ,.menue{
+      display: none;
+    }
+}
+  html {
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+body{
+    min-height:100%;
+    // padding:0px 0px 100px;
+    margin:0;
+    position:relative;
+    overflow: auto !important;
+}
+.footer{ 
+    position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+    width:100%; 
+     
+  }
+  .lowestprice{
+    font-size: 14px;
+    margin-bottom: 0px;
+    
+  }
+  .lowestprice span{
+    color: $PrimaryColor;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .border-right{
+    position: relative;
+  }
+  .PrivacyPolicy{
+    cursor: pointer;
+  }
+  .imageSlider {
+    width: 100%;
+    height: 500px;
+  }
+  .about-image{
+    position: relative;
+  }
+  .flowBack{
+    position: absolute;
+    background-color: rgba(0,0,0,0.1);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+  }
+  
+  .webOffer{
+    font-size: 14px;
+    text-decoration: underline;
+    color: blue;
+  }
+  .checkbox label{
+    width: 100%;
+  }
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

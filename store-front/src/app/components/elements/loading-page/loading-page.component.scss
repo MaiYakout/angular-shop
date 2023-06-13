@@ -1,0 +1,32 @@
+.loader{
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+}
+.loader img{
+    width: 70px;
+  height: 70px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @media screen and (max-width: 900px){
+    .loader img{
+      width: 70px !important;
+      height: 70px !important;
+    }
+    .loader{
+      min-height: 400px !important;
+    }
+  }

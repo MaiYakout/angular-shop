@@ -1,0 +1,122 @@
+<div class="bacground-prototype tobBids">
+    
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        
+        <div class="container">
+            <a class="navbar-brand" routerLink="/home">
+                <img src="../../../../assets/images/Logo.png">
+            </a>
+            <button (clickOutside)="onClickedOut($event)" (click)="clickinside()" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" #showmenu>
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <button (click)="onClickedOutClose()" class="navbar-toggler menue" #closemenue>
+                <span class="navbar-toggler-icon"></span>
+             </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" #isShow>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav">
+                    
+                </ul>
+                <form class="d-flex" >
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="buyerOrSeller === 1">
+                        <!-- <li class="nav-item" routerLink="/seller-requests" routerLinkActive="active">
+                            <a class="nav-link " aria-current="page"  >Seller’s Requests</a>
+                        </li> -->
+                        <li class="nav-item" (click)="nave('/message')">
+                            <a class="nav-link " aria-current="page"  >{{ 'Message' | translate }}</a>
+                        </li>
+                        <li class="nav-item"  (click)="nave('/bids')">
+                            <a class="nav-link " aria-current="page"  > {{ 'MyBids' | translate }}</a>
+                        </li>
+                        <li class="nav-item" (click)="nave('/create-bid')">
+                            <a class="nav-link " aria-current="page"  > {{ 'CreateABid' | translate }}</a>
+                        </li>
+                        <li class="nav-item" (click)="nave('/profile')">
+                            <a class="nav-link " aria-current="page"  >{{ 'MyProfile' | translate }}</a>
+                        </li>
+                        <li class="nav-item" *ngIf="langCondition" (click)="langButton('en')">
+                            <a class="nav-link " aria-current="page"  > English</a>
+                        </li>
+                        <li class="nav-item" *ngIf="!langCondition" (click)="langButton('ar')">
+                            <a class="nav-link " aria-current="page"  > العربية</a>
+                        </li>
+                        <li class="nav-item" data-bs-toggle="modal" data-bs-target="#logOut">
+                            <a class="nav-link " aria-current="page"  > <i class="fas fa-sign-out-alt"></i> {{ 'SignOut' | translate }} </a>
+                        </li>
+                        <li class="nav-item" >
+                            <a class="nav-link " aria-current="page"  ><i class="fas fa-user userTopBar"></i> {{name}} </a>
+                        </li>
+                        <li class="nav-item" (click)="nave('/notification')" >
+                            <a class="nav-link ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="19.951" viewBox="0 0 16 19.951">
+                                    <path id="Path_1363" data-name="Path 1363" d="M18,13.18V10a6,6,0,0,0-5-5.91V3a1,1,0,1,0-2,0V4.09A6,6,0,0,0,6,10v3.18A3,3,0,0,0,4,16v2a1,1,0,0,0,1,1H8.14a4,4,0,0,0,7.72,0H19a1,1,0,0,0,1-1V16a3,3,0,0,0-2-2.82ZM8,10a4,4,0,1,1,8,0v3H8Zm4,10a2,2,0,0,1-1.72-1h3.44A2,2,0,0,1,12,20Zm6-3H6V16a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z" transform="translate(-4 -2)" fill="#1e805d"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="buyerOrSeller === 2">
+                        <li class="nav-item" (click)="nave('/message')">
+                            <a class="nav-link " aria-current="page"  > {{ 'Message' | translate }}</a>
+                        </li>
+                        <li class="nav-item" (click)="nave('/Applied-Bids')">
+                            <a class="nav-link " aria-current="page"  > {{ 'AppliedBids' | translate }}</a>
+                        </li>
+                        <li class="nav-item" (click)="nave('/Available-Bids')">
+                            <a class="nav-link " aria-current="page"  > {{ 'AvailableBids' | translate }}</a>
+                        </li>
+                        <li class="nav-item" (click)="nave('/profile')">
+                            <a class="nav-link " aria-current="page"  > {{ 'MyProfile' | translate }}</a>
+                        </li>
+                        <li class="nav-item" *ngIf="langCondition" (click)="langButton('en')">
+                            <a class="nav-link " aria-current="page"  > الانجليزية</a>
+                        </li>
+                        <li class="nav-item" *ngIf="!langCondition" (click)="langButton('ar')">
+                            <a class="nav-link " aria-current="page"  > Arabic</a>
+                        </li>
+                        <li class="nav-item" data-bs-toggle="modal" data-bs-target="#logOut">
+                            <a class="nav-link " aria-current="page"  > <i class="fas fa-sign-out-alt"></i> {{ 'SignOut' | translate }} </a>
+                        </li>
+                        <li class="nav-item" >
+                            <a class="nav-link " aria-current="page"  ><i class="fas fa-user"></i> {{name}} </a>
+                        </li>
+                        <li class="nav-item" (click)="nave('/notification')">
+                            <a class="nav-link ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="19.951" viewBox="0 0 16 19.951">
+                                    <path id="Path_1363" data-name="Path 1363" d="M18,13.18V10a6,6,0,0,0-5-5.91V3a1,1,0,1,0-2,0V4.09A6,6,0,0,0,6,10v3.18A3,3,0,0,0,4,16v2a1,1,0,0,0,1,1H8.14a4,4,0,0,0,7.72,0H19a1,1,0,0,0,1-1V16a3,3,0,0,0-2-2.82ZM8,10a4,4,0,1,1,8,0v3H8Zm4,10a2,2,0,0,1-1.72-1h3.44A2,2,0,0,1,12,20Zm6-3H6V16a1,1,0,0,1,1-1H17a1,1,0,0,1,1,1Z" transform="translate(-4 -2)" fill="#1e805d"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+      </nav>
+</div>
+<div class="modal fade" id="logOut" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"> 
+            <div class="modal-body bodyPrototype">
+                <span class="cloes" data-bs-dismiss="modal" aria-label="Close">
+                    <svg id="Circle_Button_" data-name="Circle Button " xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                        <rect id="Area_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="48" height="48" rx="24" fill="#f2f4f8"/>
+                        <g id="Icon_" data-name="Icon " transform="translate(14 14)">
+                          <rect id="Area_ICON:feather_x_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [ICON:feather/x][SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="20" height="20" fill="rgba(253,73,198,0.35)" opacity="0"/>
+                          <g id="Icon" transform="translate(-1 -1)">
+                            <line id="Line" x1="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                            <line id="Line-2" data-name="Line" x2="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                          </g>
+                        </g>
+                      </svg>
+                </span>
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center;">
+                        <h1> {{ 'Areyousure' | translate }}</h1>
+                        <p> {{ 'rellyWantLogOut' | translate }}</p>
+                        <button class="btn getStarted ng-inserted btn-log-Out" data-bs-dismiss="modal" (click)="logOut()">
+                            <span>{{ 'YES' | translate }}</span>
+                          </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

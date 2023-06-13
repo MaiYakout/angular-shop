@@ -1,0 +1,329 @@
+<section class="bidsPage applied-Bids">
+    <div class="container">
+        <div class="row">
+            <h1> {{ 'AppliedBids' | translate }}</h1>
+            <div class="tabset">
+                <!-- Tab 1 -->
+                <input type="radio" name="tabset" id="tab1" aria-controls="rauchbier" checked>
+                <label class="activeBids" for="tab1" (click)="showProgress()"> {{ 'InProgress' | translate }}</label>
+                <!-- Tab 2 -->
+                <input type="radio" name="tabset" id="tab2" aria-controls="marzen">
+                <label class="PastBids" for="tab2" (click)="showClosed()"> {{ 'ClosedBids' | translate }}</label>
+
+                <span class="allbids" *ngIf="!emptyPageInProgress && !loadingPageInProgress  && showActivePast">
+                    <span class="activeBid">{{totalInProgress}}  {{ 'Bids' | translate }}</span>
+
+                </span>
+                <span class="allbids" *ngIf="!emptyPageClosed && !loadingPageClosed  && showActive">
+                    <span class="activeBid" *ngIf="!emptyPageClosed ">{{totalClosed}}  {{ 'BidsAreClosed' | translate }}</span>
+                </span>
+                
+                <div class="tab-panels">
+                    <section id="rauchbier" class="tab-panel">
+                        <div class="noAvailable" *ngIf="emptyPageInProgress">
+                            <h3> {{ 'NoAvailableBids' | translate }}</h3>
+                            <p> {{ 'haveanybids' | translate }}</p>
+                        </div>
+                        <div class="noAvailable" *ngIf="loadingPageInProgress">
+                            <app-loading-page></app-loading-page>
+                        </div>
+                        <div class="allActiveBids Closed-Bids" *ngIf="!emptyPageInProgress && !loadingPageInProgress">
+                            <div class="row">
+                                <div class="col-md-12" *ngFor="let item of InProgressBid">
+                                    <div class="card-bids">
+                                        <div class="body-bids">
+                                            <h2 (click)="Detailes(item.id)">{{item.name}} <span class="code-bids">#{{item.id}}</span>
+                                                 <!-- <span class="offer-bids">Number of offers:55</span> -->
+                                                </h2>
+                                            <h3 (click)="Detailes(item.id)">
+                                                <span class="bid-type">
+                                                    {{item.type.name}}
+                                                </span>
+                                                <span class="location-bid">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13.3" height="19" viewBox="0 0 13.3 19">
+                                                        <path id="Icon_material-location-on" data-name="Icon material-location-on" d="M14.15,3A6.645,6.645,0,0,0,7.5,9.65C7.5,14.638,14.15,22,14.15,22S20.8,14.638,20.8,9.65A6.645,6.645,0,0,0,14.15,3Zm0,9.025A2.375,2.375,0,1,1,16.525,9.65,2.376,2.376,0,0,1,14.15,12.025Z" transform="translate(-7.5 -3)" fill="#1e805d"/>
+                                                      </svg>
+                                                      {{item.region.name}}                                 
+                                                </span>
+                                                <span class="public-bids" *ngIf="item.status === 1"> {{ 'active' | translate }}</span>
+                                                <span class="public-bids" *ngIf="item.status === 2"> {{ 'accepted' | translate }}</span>
+                                                <span class="closed" *ngIf="item.status === 3"> {{ 'rejected' | translate }}</span>
+                                                <span class="closed" *ngIf="item.status === 4"> {{ 'canceled' | translate }}</span>
+                                            </h3>
+                                            <div class="row">
+                                                <h4 (click)="Detailes(item.id)" class="col-md-10 conditionSeller">
+                                                    <span class="condition">{{ 'Condition' | translate }}</span>
+                                                    <span *ngIf="item.attaches.length != 0">
+                                                        <span class="attachment-bids" *ngFor="let attachItem of item.attaches" >
+                                                            <a href="{{attachItem?.file}}" target="_blank"> 
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="17.008" height="17.754" viewBox="0 0 17.008 17.754">
+                                                                    <path id="Path_1371" data-name="Path 1371" d="M19.8,11.854l-7.47,7.47a4.88,4.88,0,0,1-6.9-6.9l7.47-7.47a3.253,3.253,0,1,1,4.6,4.6l-7.478,7.47a1.627,1.627,0,1,1-2.3-2.3l6.9-6.893" transform="translate(-3.5 -3.5)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                                                </svg>
+                                                                {{attachItem?.name}}
+                                                            </a>
+                                                        </span>
+                                                        <span class="downlod-boids">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.5" viewBox="0 0 19.5 19.5">
+                                                                <path id="Path_1372" data-name="Path 1372" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m4-5,5,5m0,0,5-5m-5,5V5" transform="translate(-4.25 -4.25)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                                              </svg>                                  
+                                                        </span>
+                                                    </span>
+                                                    <span *ngIf="item.attaches.length === 0">
+                                                        <span class="attachment-bids">
+                                                            <a> 
+                                                                 {{ 'NotFound' | translate }}
+                                                            </a>
+                                                        </span>
+                                                    </span>
+                                                </h4>
+                                                <span class="apply-bids col-md-2">
+                                                    <button  type="submit" class="btn getStarted Excuse" data-bs-toggle="modal" [attr.data-bs-target]="'#showBuild'+ item.id"> {{ 'Excuse' | translate }}</button>
+                                                </span>
+                                                <div class="modal fade" id="showBuild{{item.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                        <div class="modal-content Bid-excuse-reason"> 
+                                                            <div class="modal-body bodyPrototype">
+                                                                <span class="cloes" data-bs-dismiss="modal" aria-label="Close">
+                                                                    <svg id="Circle_Button_" data-name="Circle Button " xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                                                                        <rect id="Area_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="48" height="48" rx="24" fill="#f2f4f8"/>
+                                                                        <g id="Icon_" data-name="Icon " transform="translate(14 14)">
+                                                                          <rect id="Area_ICON:feather_x_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [ICON:feather/x][SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="20" height="20" fill="rgba(253,73,198,0.35)" opacity="0"/>
+                                                                          <g id="Icon" transform="translate(-1 -1)">
+                                                                            <line id="Line" x1="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                                                                            <line id="Line-2" data-name="Line" x2="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                                                                          </g>
+                                                                        </g>
+                                                                      </svg>
+                                                                </span>
+                                                                
+                                                                <h1> {{ 'BidExcuseReason' | translate }}</h1>
+                                                                <p> {{ 'Pleasetypeyourexcuse' | translate }}</p>
+                                                                <form [formGroup]= "formGroup" (ngSubmit)="submitExcuse(item.myOffer.id)">
+                                                                    <div class="row">
+                                                                        <div class="col-md-3"></div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <select class="form-control" formControlName="cancelReason_id" >
+                                                                                    <option [ngValue]="null" [selected]="true">  {{ 'Choosereasonforexcuse' | translate }}</option>
+                                                                                    <option *ngFor="let item of resonce" [ngValue]="item.id">   {{item.name}} </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-3"></div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="Verify">
+                                                                                <button class="btn getStarted" type="submit" *ngIf="!loadingbutton"><span>{{ 'Excuse' | translate }}</span></button>
+                                                                                <a class="loading" *ngIf="loadingbutton"><img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="Attatchements">
+                                            <div class="row">
+                                                <h4 class="col-md-12">
+                                                    <span (click)="Detailes(item.id)" class="condition"> {{ 'Attatchements' | translate }}</span>
+                                                    <span (click)="Detailes(item.id)" *ngIf="item?.myOffer.attachNormal.length != 0">
+                                                        <span class="attachment-bids" *ngFor="let attachItem of item?.myOffer.attachNormal" >
+                                                            <a href="{{attachItem?.file}}" target="_blank"> 
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="17.008" height="17.754" viewBox="0 0 17.008 17.754">
+                                                                    <path id="Path_1371" data-name="Path 1371" d="M19.8,11.854l-7.47,7.47a4.88,4.88,0,0,1-6.9-6.9l7.47-7.47a3.253,3.253,0,1,1,4.6,4.6l-7.478,7.47a1.627,1.627,0,1,1-2.3-2.3l6.9-6.893" transform="translate(-3.5 -3.5)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                                                </svg>
+                                                                {{attachItem?.name}}
+                                                            </a>
+                                                        </span>
+                                                        <span class="downlod-boids">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.5" viewBox="0 0 19.5 19.5">
+                                                                <path id="Path_1372" data-name="Path 1372" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m4-5,5,5m0,0,5-5m-5,5V5" transform="translate(-4.25 -4.25)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                                              </svg>                                  
+                                                        </span>
+                                                    </span>
+                                                    <span (click)="Detailes(item.id)" *ngIf="item?.myOffer.attachNormal.length === 0">
+                                                        <span class="attachment-bids">
+                                                            <a> 
+                                                                {{ 'NotFound' | translate }}
+                                                            </a>
+                                                        </span>
+                                                    </span>
+                                                    <div class="right-price" style="display: flex;">
+                                                        <span  class="my-price">{{ 'MyPrice' | translate }} : {{ 'SAR' | translate }} {{item?.myOffer?.price}}</span>
+                                                        <button class="btn logIn Edit"  (click)="EditBids(item)"><span>{{ 'Edit' | translate }}</span></button>
+                                                    </div>
+                                                </h4>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="footer-bidw" (click)="Detailes(item.id)">
+                                            <div class="row">
+                                                <h2 class="col-md-10">  {{ 'PublishedDate' | translate }}
+                                                    <span class="published">
+                                                        {{item.createdAt}}
+                                                     </span>
+                                                     <span class="Lastdateforapplying">
+                                                        {{ 'Lastdateforapplying' | translate }}
+                                                        <span class="published">
+                                                            {{item.endDate}}
+                                                        </span>
+                                                    </span>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="pagination" *ngIf="!emptyPageInProgress && !loadingPageInProgress">
+                            <ul id="pagination">
+                                <li (click)="moveToInProgress(pageInProgress-1)">
+                                    <a  class="previoesPaginate">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                            <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li *ngFor="let in of ArrInProgress(numInProgress).fill(1) | slice: 0 : 20 ; let i = index " ><a (click)="moveToInProgress(i+1)" [ngClass]="{'active': currentPageInProgress === i+1}">{{i+1}}</a></li>
+                                <!-- <li ><a>1</a></li> -->
+                                <li (click)="moveToInProgress(pageInProgress+1)">
+                                    <a class="nextPaginate">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                            <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                        </svg>
+                                    </a>
+                                </li>
+                              </ul> 
+                        </div>
+                    </section>
+                    <section id="marzen" class="tab-panel">
+                        <div class="noAvailable" *ngIf="emptyPageClosed">
+                            <h3> {{ 'NoAvailableBids' | translate }}</h3>
+                            <p>{{ 'haveanybids' | translate }}</p>
+                        </div>
+                        <div class="noAvailable" *ngIf="loadingPageClosed">
+                            <app-loading-page></app-loading-page>
+                        </div>
+                        <div class="allActiveBids Closed-Bids" *ngIf="!emptyPageClosed && !loadingPageClosed">
+                            <div class="row">
+                                <div class="col-md-12" *ngFor="let item of ClosedBid">
+                                    <div class="card-bids card-close-bid">
+                                        <div class="body-bids">
+                                            <h2 (click)="Detailes(item.id)">{{item.name}} <span class="code-bids">#{{item.id}}</span> 
+                                                <!-- <span class="offer-bids">Number of offers:{{item?.my}}</span> -->
+                                            </h2>
+                                            <h3 (click)="Detailes(item.id)">
+                                                <span class="bid-type">
+                                                    {{item.type?.name}}
+                                                </span>
+                                                <span class="location-bid">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13.3" height="19" viewBox="0 0 13.3 19">
+                                                        <path id="Icon_material-location-on" data-name="Icon material-location-on" d="M14.15,3A6.645,6.645,0,0,0,7.5,9.65C7.5,14.638,14.15,22,14.15,22S20.8,14.638,20.8,9.65A6.645,6.645,0,0,0,14.15,3Zm0,9.025A2.375,2.375,0,1,1,16.525,9.65,2.376,2.376,0,0,1,14.15,12.025Z" transform="translate(-7.5 -3)" fill="#1e805d"/>
+                                                      </svg>
+                                                      {{item.region?.name}}                                  
+                                                </span>
+                                                <span class="public-bids" *ngIf="item.acceptedOffer != null">{{ 'Closed' | translate }} ({{ 'youwinthisbid' | translate }}) </span>
+                                                <span class="closed" *ngIf="item.acceptedOffer === null"> {{ 'Closed' | translate }}</span>
+                                            </h3>
+                                            <div class="row">
+                                                <h4 class="col-md-10" (click)="Detailes(item.id)">
+                                                    <span class="condition">{{ 'Condition' | translate }}</span>
+                                                    <span *ngIf="item.attaches.length != 0">
+                                                        <span class="attachment-bids" *ngFor="let attachItem of item.attaches" >
+                                                            <a href="{{attachItem?.file}}" target="_blank"> 
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="17.008" height="17.754" viewBox="0 0 17.008 17.754">
+                                                                    <path id="Path_1371" data-name="Path 1371" d="M19.8,11.854l-7.47,7.47a4.88,4.88,0,0,1-6.9-6.9l7.47-7.47a3.253,3.253,0,1,1,4.6,4.6l-7.478,7.47a1.627,1.627,0,1,1-2.3-2.3l6.9-6.893" transform="translate(-3.5 -3.5)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                                                </svg>
+                                                                {{attachItem?.name}}
+                                                            </a>
+                                                        </span>
+                                                        <span class="downlod-boids">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.5" viewBox="0 0 19.5 19.5">
+                                                                <path id="Path_1372" data-name="Path 1372" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m4-5,5,5m0,0,5-5m-5,5V5" transform="translate(-4.25 -4.25)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                                              </svg>                                  
+                                                        </span>
+                                                    </span>
+                                                    <span *ngIf="item.attaches.length === 0">
+                                                        <span class="attachment-bids">
+                                                            <a> 
+                                                                {{ 'NotFound' | translate }}
+                                                            </a>
+                                                        </span>
+                                                    </span>
+                                                </h4>
+                                                <span class="apply-bids col-md-2" *ngIf="item.acceptedOffer != null">
+                                                    <button  type="submit" class="btn getStarted" (click)="chat(item)">{{ 'ContactBuyer' | translate }}</button>
+                                                </span>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="Attatchements" (click)="Detailes(item.id)">
+                                            <div class="row">
+                                                <h4 class="col-md-12">
+                                                    <span (click)="Detailes(item.id)" class="condition">{{ 'Attatchements' | translate }}</span>
+                                                    <span *ngIf="item?.myOffer.attachNormal.length != 0">
+                                                        <span class="attachment-bids" *ngFor="let attachItem of item?.myOffer.attachNormal" >
+                                                            <a href="{{attachItem?.file}}" target="_blank"> 
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="17.008" height="17.754" viewBox="0 0 17.008 17.754">
+                                                                    <path id="Path_1371" data-name="Path 1371" d="M19.8,11.854l-7.47,7.47a4.88,4.88,0,0,1-6.9-6.9l7.47-7.47a3.253,3.253,0,1,1,4.6,4.6l-7.478,7.47a1.627,1.627,0,1,1-2.3-2.3l6.9-6.893" transform="translate(-3.5 -3.5)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                                                </svg>
+                                                                {{attachItem?.name}}
+                                                            </a>
+                                                        </span>
+                                                        <span class="downlod-boids">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.5" viewBox="0 0 19.5 19.5">
+                                                                <path id="Path_1372" data-name="Path 1372" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m4-5,5,5m0,0,5-5m-5,5V5" transform="translate(-4.25 -4.25)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                                              </svg>                                  
+                                                        </span>
+                                                    </span>
+                                                    <span *ngIf="item?.myOffer.attachNormal.length === 0">
+                                                        <span class="attachment-bids">
+                                                            <a> 
+                                                                {{ 'NotFound' | translate }}
+                                                            </a>
+                                                        </span>
+                                                    </span>
+                                                    <span class="my-price"> {{ 'MyPrice' | translate }} : {{ 'SAR' | translate }} {{item?.myOffer?.price}}</span>
+                                                </h4>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination" *ngIf="!emptyPageClosed && !loadingPageClosed">
+                            <ul id="pagination">
+                                <li (click)="moveToCloseBid(pageClosed-1)">
+                                    <a  class="previoesPaginate">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                            <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li *ngFor="let in of ArrClosed(numClosed).fill(1) | slice: 0 : 20 ; let i = index " ><a (click)="moveToCloseBid(i+1)" [ngClass]="{'active': currentPageClosed === i+1}">{{i+1}}</a></li>
+                                <li (click)="moveToCloseBid(pageClosed+1)">
+                                    <a class="nextPaginate">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                            <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                        </svg>
+                                    </a>
+                                </li>
+                              </ul> 
+                        </div>
+                    </section>
+                    
+                </div>
+                
+              </div>
+              
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->

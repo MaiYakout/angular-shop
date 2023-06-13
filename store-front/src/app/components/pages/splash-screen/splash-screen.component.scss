@@ -1,0 +1,132 @@
+@-webkit-keyframes color {
+    0% {
+        background-color: #f1c40f;
+    }
+    32% {
+        background-color: #e74c3c;
+    }
+    55% {
+        background-color: #9b59b6;
+    }
+    76% {
+        background-color: #16a085;
+    }
+    100% {
+        background-color: #2ecc71;
+    }
+}
+
+@-moz-keyframes color {
+    0% {
+        background-color: #f1c40f;
+    }
+    32% {
+        background-color: #e74c3c;
+    }
+    55% {
+        background-color: #9b59b6;
+    }
+    76% {
+        background-color: #16a085;
+    }
+    100% {
+        background-color: #2ecc71;
+    }
+}
+
+@keyframes color {
+    0% {
+        background-color: #f1c40f;
+    }
+    32% {
+        background-color: #e74c3c;
+    }
+    55% {
+        background-color: #9b59b6;
+    }
+    76% {
+        background-color: #16a085;
+    }
+    100% {
+        background-color: #2ecc71;
+    }
+}
+
+.circles .circle-one
+{
+    height:120px;
+    width:120px;
+    border-radius:50%;
+   
+  
+background: linear-gradient(45deg, #042461 0%, rgba(225, 5, 34, 0) 70%), linear-gradient(135deg, #340447 10%, rgba(49, 5, 209, 0) 80%), linear-gradient(225deg, #0f053a 10%, rgba(10, 219, 216, 0) 80%), linear-gradient(315deg, #050813 100%, rgba(9, 245, 5, 0) 70%);
+
+    
+    background-size: cover;
+    top:100px;
+    z-index:2;
+    font-size:18px;
+	color:#fff;
+}
+.circles .circle-two
+{
+    height:250px;
+    width:250px;
+    background-color:#fff;
+    background: url("../../../../assets/images/Logo.png")  no-repeat;
+    background-size: contain;
+    font-size:30px;
+	color:#017db0;
+    margin: auto;
+    position: relative;
+}
+
+.circles > div
+{
+    position:relative;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    position:absolute;
+    animation: circles-load 1s cubic-bezier(0.17, 0.67, .58, 1.2);
+    animation-fill-mode:forwards;
+    animation-delay: 1s;
+    -webkit-animation: circles-load 1s cubic-bezier(0.17, 0.67, .58, 1.2);
+    -webkit-animation-fill-mode:forwards;
+    -webkit-animation-delay: 1s;
+    
+}
+
+.circles 
+{
+    width: 100%;
+    display: flex;
+}
+
+@keyframes circles-load
+{
+    50%
+    {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    100%
+    {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes circles-load
+{
+    50%
+    {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    100%
+    {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+

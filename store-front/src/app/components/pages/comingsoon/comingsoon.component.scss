@@ -1,0 +1,45 @@
+/* HEADER SECTION */
+
+#h {
+    background: url(/assets/images/statistics/statistics.png) no-repeat center top;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 100vh;
+    width: 100%;
+    color: #fff;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+  }
+#h .overlay{
+    background-color: #4a444480;
+    padding-top: 150px;
+
+    width:100%;
+    height:100vh;
+    overflow: hidden;
+    z-index: 2;
+}
+  #h h1 {
+    font-weight: 600;
+    font-size: 60px;
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  
+  #h h2 {
+    font-size: 50px;
+  }
+  
+  #h h5 {
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    margin-bottom: 25px;
+  }

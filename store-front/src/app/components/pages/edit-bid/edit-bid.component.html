@@ -1,0 +1,113 @@
+<section class="noti bidsPage">
+    <div class="container">
+        <div class="row">
+          <div *ngIf="bidDetailes.status == 1">
+            <h1 class="profile-header">
+              {{ 'Editbid' | translate }}
+           </h1>
+          </div>
+          <div *ngIf="bidDetailes.status == 3">
+            <h1 class="profile-header">
+              {{ 'ReLaunch' | translate }}
+           </h1>
+          </div>
+            <div class="col-md-10 apply_bid" *ngIf="!loadingPage">
+                <form class="row" [formGroup]= "formGroup" (ngSubmit)="submit()">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control" formControlName="type_id" >
+                                <option [ngValue]="null" [selected]="true">  {{ 'BidType' | translate }}</option>
+                                <option *ngFor="let item of type" [ngValue]="item.id">   {{item.name}} </option>
+                            </select>
+                            <span class="down"><i class="fas fa-angle-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" onfocus="(this.type='datetime-local')" class="form-control" id="exampleInputPassword1"  formControlName="endDate">
+                          </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control"  formControlName="region_id">
+                              <option [ngValue]="null" [selected]="true"> {{ 'BidRegion' | translate }}</option>
+                              <option *ngFor="let item of region" [ngValue]="item.id">{{item.name}}</option>
+                            </select>
+                            <span class="down"><i class="fas fa-angle-down"></i></span>
+                          </div>
+                        </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="is_private">
+                              <option [ngValue]="0"> {{ 'public' | translate }}</option>
+                              <option [ngValue]="1"> {{ 'private' | translate }}</option>
+                            </select>
+                            <span class="down"><i class="fas fa-angle-down"></i></span>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <mat-form-field class="example-chip-list form-control" appearance="fill">
+                                  <mat-chip-list #chipList aria-label="selecteion2">
+                                    <mat-chip *ngFor="let invitation of invitations" [selectable]="selectable"
+                                             [removable]="removable" (removed)="remove(invitation)">
+                                      {{invitation}}
+                                      <button matChipRemove *ngIf="removable">
+                                        <mat-icon><i class="fa fa-times"></i></mat-icon>
+                                      </button>
+                                    </mat-chip>
+                                    <input 
+                                    placeholder="{{ 'BidSellerEmailsPhones' | translate }}"
+                                           [matChipInputFor]="chipList"
+                                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                           [matChipInputAddOnBlur]="addOnBlur"
+                                           (matChipInputTokenEnd)="add($event)">
+                                  </mat-chip-list>
+                                </mat-form-field>
+                              </div>
+                        </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <mat-form-field class="example-chip-list form-control" appearance="fill">
+                              <mat-chip-list #chipList2 aria-label="selecteion1">
+                                <mat-chip *ngFor="let attach of attachments2" [selectable]="selectable"
+                                [removable]="removable" (removed)="removeAttachment(attach)">
+                              {{attach.name}}
+                                <button matChipRemove *ngIf="removable">
+                                  <mat-icon><i class="fa fa-times"></i></mat-icon>
+                                </button>
+                                </mat-chip>
+                                <div class="fileUpload">
+                                  <input type="file" class="upload" (change)="handleFile($event)" multiple/>
+                                  <span>{{ 'ConditionsNote' | translate }}
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.811" viewBox="0 0 19.5 19.811">
+                                          <path id="Path_1373" data-name="Path 1373" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m14-7L14,5m0,0L9,10m5-5V17" transform="translate(-4.25 -3.939)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                      </svg>                                          
+                                  </span>
+                              </div>
+                              </mat-chip-list>
+                            </mat-form-field>
+                         
+                            
+                          </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                      <button class="btn getStarted btn-log-Out" type="submit" *ngIf="!loading">
+                        <span *ngIf="bidDetailes.status == 1">{{ 'Submit' | translate }}</span>
+                        <span *ngIf="bidDetailes.status == 3">{{ 'ReLaunch' | translate }}</span>
+
+                      </button>
+                      <a class="loading" *ngIf="loading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                    </div>
+                </form>
+            </div>
+            <app-loading-page *ngIf="loadingPage"></app-loading-page>
+        </div>
+    </div>
+</section>

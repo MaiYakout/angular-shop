@@ -1,0 +1,47 @@
+<section class="login-page " >
+    <div class="model-login">
+        <div class="logoW logopassword" routerLink="/home">
+            <img src="../../../../assets/images/LogoW.png">
+        </div>
+        <div class="body-complete body-reset RegisterNow body-password">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1> {{ 'RegisterAs' | translate }}</h1>
+                    <p class="textComplete"> {{ 'Pleasechooseregister' | translate }}</p>
+                    
+                      <div class="row">
+                          <div class="col-md-6">
+                            <div class="checkbox">
+                                <label class="checkbox-wrapper">
+                                    <input type="radio" class="checkbox-input" name="radio" (change)="TypeRegester($event , 1)" value="1"/>
+                                    <span class="checkbox-tile">
+                                        <span class="checkbox-icon">
+                                            {{ 'ImaBuyer' | translate }}
+                                        </span>
+                                        <span class="checkbox-label">{{ 'descBuyer' | translate }}</span>
+                                    </span>
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="checkbox">
+                                <label class="checkbox-wrapper">
+                                    <input type="radio" class="checkbox-input" name="radio" value="2" (change)="TypeRegester($event , 2)" />
+                                    <span class="checkbox-tile">
+                                        <span class="checkbox-icon">
+                                            {{ 'ImaSeller' | translate }}
+                                        </span>
+                                        <span class="checkbox-label">{{ 'descSeller' | translate }}</span>
+                                    </span>
+                                </label>
+                            </div>
+                          </div>
+                      </div>
+                    <div class="Verify">
+                        <button class="btn getStarted" type="submit" (click)="submitTybe()"><span>{{ 'Continue' | translate }}</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

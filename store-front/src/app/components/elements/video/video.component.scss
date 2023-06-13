@@ -1,0 +1,45 @@
+@keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .stroke-solid {
+    stroke-dashoffset: 0;
+    stroke-dashArray: 300;
+    stroke-width: 4px;
+    transition: stroke-dashoffset 1s ease, 
+                opacity 1s ease;
+  }
+  
+  .icon {
+    transform: scale(.8);
+    transform-origin: 50% 50%;
+    transition: transform 200ms ease-out;
+  }
+  
+  // Hover
+  #play:hover {
+    .stroke-solid {
+      opacity: 1;
+      stroke-dashoffset: 300;
+    }
+    .icon {
+      transform: scale(.9);
+    }
+  }
+  
+  
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    background-image: url("http://taylorswines.uat.playhousedigital.com/media/wysiwyg/TaylorsWines/Homepage/img_video.png");
+  }
+  #play {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
+  

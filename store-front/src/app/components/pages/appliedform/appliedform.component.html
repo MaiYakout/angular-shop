@@ -1,0 +1,92 @@
+<section class="noti bidsPage">
+    <div class="container">
+        <div class="row">
+            <h1 class="profile-header">  {{ 'Applyforthebid' | translate }}
+                <span class="hours-bids" *ngIf="bidItem.differentDateTime !== null">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20.842" height="20.842" viewBox="0 0 20.842 20.842">
+                        <path id="Icon_ionic-md-timer" data-name="Icon ionic-md-timer" d="M12.639,19.588A1.157,1.157,0,1,0,13.8,18.43,1.161,1.161,0,0,0,12.639,19.588Zm0-16.213V8h2.315V5.785A8.1,8.1,0,1,1,5.69,13.8a8.019,8.019,0,0,1,1.829-5.12L13.8,14.953l1.633-1.633L7.553,5.449v.025a10.4,10.4,0,1,0,6.243-2.1ZM20.745,13.8a1.157,1.157,0,1,0-1.157,1.157A1.161,1.161,0,0,0,20.745,13.8Zm-13.9,0A1.157,1.157,0,1,0,8,12.639,1.161,1.161,0,0,0,6.847,13.8Z" transform="translate(-3.375 -3.375)" fill="#c00"></path>
+                    </svg>
+                     {{bidItem?.differentDateTime}}
+                </span>
+                <span class="invited_bid" *ngIf="bidItem?.is_private != 0"> {{ 'invitedforthisbid' | translate }}</span>
+            </h1>
+            <div class="col-md-8 apply_bid">
+                <form [formGroup]= "formGroup" (ngSubmit)="submit()">
+                    <div class="row">
+                        
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <mat-form-field class="example-chip-list form-control" appearance="fill">
+                                    <mat-chip-list #chipList2 aria-label="selecteion1">
+                                      <mat-chip *ngFor="let attach of normalAttaches" [selectable]="selectable"
+                                      [removable]="removable" (removed)="removeNormal(attach)">
+                                        {{attach?.name}}
+                                      <button matChipRemove *ngIf="removable">
+                                        <mat-icon><i class="fa fa-times"></i></mat-icon>
+                                      </button>
+                                      </mat-chip>
+                                      <div class="fileUpload">
+                                        <input type="file" class="upload" (change)="handleFileNormal($event)" multiple/>
+                                        <span> {{ 'Attatchements' | translate }}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.811" viewBox="0 0 19.5 19.811">
+                                                <path id="Path_1373" data-name="Path 1373" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m14-7L14,5m0,0L9,10m5-5V17" transform="translate(-4.25 -3.939)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                            </svg>                                          
+                                        </span>
+                                    </div>
+                                    </mat-chip-list>
+                                  </mat-form-field>
+                              </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="lowestprice">{{ 'thelowestPriceIs' | translate }} <span>{{bidItem?.highPrice}}</span></p>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" {{ 'TotalPrice' | translate }}" formControlName="price">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn getStarted btn-submit" type="submit" *ngIf="!loading"><span> {{ 'Submit' | translate }}</span></button>
+                            <a class="loading" *ngIf="loading"><img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <div class="apply-bid-detailes">
+                    <div class="card-bids">
+                        <div class="body-bids">
+                            <h2>{{bidItem?.name}} <span class="code-bids">#{{bidItem?.id}}</span> <span class="offer-bids" (click)="Details(bidItem?.id)"> {{ 'BidDetails' | translate }}<i class="fa fa-arrow-circle-right"></i></span></h2>
+                            <h3>
+                                <span class="bid-type">
+                                    {{bidItem?.type.name}}
+                                </span>
+                                <span class="location-bid">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13.3" height="19" viewBox="0 0 13.3 19">
+                                        <path id="Icon_material-location-on" data-name="Icon material-location-on" d="M14.15,3A6.645,6.645,0,0,0,7.5,9.65C7.5,14.638,14.15,22,14.15,22S20.8,14.638,20.8,9.65A6.645,6.645,0,0,0,14.15,3Zm0,9.025A2.375,2.375,0,1,1,16.525,9.65,2.376,2.376,0,0,1,14.15,12.025Z" transform="translate(-7.5 -3)" fill="#1e805d"/>
+                                      </svg>
+                                      {{bidItem?.region?.name}}                                  
+                                </span>
+                            </h3>
+                            <h4>
+                                <span class="bid-type">
+                                   {{ 'PublishedDate' | translate }}
+                                </span>
+                                <span class="published">
+                                    {{bidItem?.createdAt}}                                  
+                                </span>
+                            </h4>
+                            <h4>
+                                <span class="bid-type">
+                                    {{ 'Lastdateforapplying' | translate }}
+                                </span>
+                                <span class="published">
+                                    {{bidItem?.endDate}}                                
+                                </span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

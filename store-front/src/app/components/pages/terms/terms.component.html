@@ -1,0 +1,16 @@
+
+<div class="loading-home" *ngIf="loadding">
+    <app-loading-page style="margin: auto;"></app-loading-page>
+</div>
+<section class="abountMunaqes" *ngIf="!loadding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ 'TermsofService' | translate }}</h1>
+                <p>
+                    {{info.terms}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

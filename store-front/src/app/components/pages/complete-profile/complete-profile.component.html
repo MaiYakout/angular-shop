@@ -1,0 +1,48 @@
+<section class="login-page">
+    <div class="model-login">
+        <div class="logoW logopassword" routerLink="/home">
+            <img src="../../../../assets/images/LogoW.png">
+        </div>
+        <div class="body-reset body-password">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ 'Pleasecompleteyourprofile' | translate }}</h1>
+                    <p class="textComplete">{{ 'createbidsandenjoy' | translate }}</p>
+                    
+                      <form [formGroup]= "formGroup" (ngSubmit)="submit()">
+                        <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" {{ 'CompanyName' | translate }}" formControlName="companyName" >
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select class="form-control" formControlName="companyRegion_id" >
+                                        <option [ngValue]="null" [selected]="true">{{ 'CompanyRegion' | translate }} </option>
+                                        <option *ngFor="let item of regions" [ngValue]="item.id">   {{item.name}} </option>
+                                    </select>
+                                    <span class="down"><i class="fas fa-angle-down"></i></span>
+                                </div>
+                          </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder=" {{ 'CRNumber' | translate }}" formControlName="crNum" >
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder=" {{ 'CompanyNumber' | translate }}" formControlName="companyPhone" >
+                                </div>
+                            </div>
+                        </div>
+                      <div class="Verify">
+                          <button class="btn getStarted" type="submit" *ngIf="!loading"><span>{{ 'Verify' | translate }}</span></button>
+                          <a class="loading" *ngIf="loading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                      </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

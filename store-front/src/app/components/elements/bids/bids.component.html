@@ -1,0 +1,96 @@
+<section  class="bids" *ngIf="!loadding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 header-bids">
+                <div class="text-bids">
+                    <h1> {{ 'SelectedBids' | translate }}</h1>
+                    <p> {{ 'TextSelectedBids' | translate }}</p>
+                </div>
+            </div>
+            <div class="col-md-12" *ngFor="let item of bids">
+                <div class="card-bids">
+                    <div class="body-bids">
+                        <h2><span>{{item.name}}</span> <span class="code-bids"> {{item.id}}</span> 
+                            <!-- <span class="offer-bids">Number of offers:55</span> -->
+                        </h2>
+                        <h3>
+                            <span class="bid-type">
+                                {{item.type.name}}
+                            </span>
+                            <span class="location-bid">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13.3" height="19" viewBox="0 0 13.3 19">
+                                    <path id="Icon_material-location-on" data-name="Icon material-location-on" d="M14.15,3A6.645,6.645,0,0,0,7.5,9.65C7.5,14.638,14.15,22,14.15,22S20.8,14.638,20.8,9.65A6.645,6.645,0,0,0,14.15,3Zm0,9.025A2.375,2.375,0,1,1,16.525,9.65,2.376,2.376,0,0,1,14.15,12.025Z" transform="translate(-7.5 -3)" fill="#1e805d"/>
+                                  </svg>
+                                  {{item.region?.name}}                                 
+                            </span>
+                            <span class="public-bids" *ngIf="item.is_private === 0">{{ 'Public' | translate }}</span>
+                            <span class="public-bids" *ngIf="item.is_private != 0">{{ 'Private' | translate }}</span>
+                        </h3>
+                        <div class="row">
+                            <h4 class="col-md-10">
+                                <span class="condition">{{ 'Condition' | translate }}</span>
+                                <span *ngIf="item.attaches.length != 0">
+                                    <span class="attachment-bids" *ngFor="let attachItem of item.attaches" >
+                                        <a href="{{attachItem?.file}}" target="_blank"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17.008" height="17.754" viewBox="0 0 17.008 17.754">
+                                                <path id="Path_1371" data-name="Path 1371" d="M19.8,11.854l-7.47,7.47a4.88,4.88,0,0,1-6.9-6.9l7.47-7.47a3.253,3.253,0,1,1,4.6,4.6l-7.478,7.47a1.627,1.627,0,1,1-2.3-2.3l6.9-6.893" transform="translate(-3.5 -3.5)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                            </svg>
+                                            {{attachItem?.name}}
+                                        </a>
+                                    </span>
+                                    <span class="downlod-boids" (click)="downloadAll()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.5" viewBox="0 0 19.5 19.5">
+                                            <path id="Path_1372" data-name="Path 1372" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m4-5,5,5m0,0,5-5m-5,5V5" transform="translate(-4.25 -4.25)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                          </svg>                                  
+                                    </span>
+                                </span>
+                                <span *ngIf="item.attaches.length === 0">
+                                    <span class="attachment-bids">
+                                        <a> 
+                                            {{ 'NotFound' | translate }}
+                                        </a>
+                                    </span>
+                                </span>
+                            </h4>
+                            <span class="apply-bids col-md-2">
+                                <button  type="submit" class="btn getStarted" (click)="bidLogin(item?.id)">{{ 'Apply' | translate }}</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="footer-bidw">
+                        <div class="row">
+                            <h2 class="col-md-10"> {{ 'PublishedDate' | translate }}
+                                <span class="published">
+                                    {{item.createdAt}}
+                                </span>
+                                <span class="Lastdateforapplying">
+                                    {{ 'Lastdateforapplying' | translate }}
+                                    <span class="published">
+                                        {{item.endDate}}
+                                    </span>
+                                </span>
+                            </h2>
+                            <div class="col-md-2" *ngIf="item.differentDateTime != null">
+                                <span class="hours-bids">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20.842" height="20.842" viewBox="0 0 20.842 20.842">
+                                        <path id="Icon_ionic-md-timer" data-name="Icon ionic-md-timer" d="M12.639,19.588A1.157,1.157,0,1,0,13.8,18.43,1.161,1.161,0,0,0,12.639,19.588Zm0-16.213V8h2.315V5.785A8.1,8.1,0,1,1,5.69,13.8a8.019,8.019,0,0,1,1.829-5.12L13.8,14.953l1.633-1.633L7.553,5.449v.025a10.4,10.4,0,1,0,6.243-2.1ZM20.745,13.8a1.157,1.157,0,1,0-1.157,1.157A1.161,1.161,0,0,0,20.745,13.8Zm-13.9,0A1.157,1.157,0,1,0,8,12.639,1.161,1.161,0,0,0,6.847,13.8Z" transform="translate(-3.375 -3.375)" fill="#c00"/>
+                                    </svg>
+                                    {{item.differentDateTime}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="seeAll-bids">
+                    <button type="submit" class="btn" (click)="SeeAll()"><span>{{ 'SeeAll' | translate }}</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="loading-home" *ngIf="loadding">
+    <app-loading-page style="margin: auto;"></app-loading-page>
+</div>

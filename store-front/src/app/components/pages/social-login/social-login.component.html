@@ -1,0 +1,45 @@
+<section class="login-page">
+    <div class="model-login">
+        <div class="logoW logopassword" routerLink="/home">
+            <img src="../../../../assets/images/LogoW.png">
+        </div>
+        <div class="body-complete body-reset body-password">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1> {{ 'Createanaccountasabuyer' | translate }}</h1>
+                    <h2>{{ 'Alreadyanuser' | translate }}<span routerLink="/login">  {{ 'SignIn' | translate }}</span> </h2>
+                    
+                    <form #Form="ngForm" (ngSubmit)="submit(Form.value)">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder=" {{ 'Name' | translate }}" name="name" ngModel [value]="socialUser.name">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                          <div class="form-group">
+                              <input type="email" class="form-control" id="exampleInputPassword1" 
+                              placeholder=" {{ 'EmailAddress' | translate }}" name="email" ngModel [value]="socialUser.email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                              <input type="text" class="form-control" id="exampleInputPassword1" 
+                              placeholder=" {{ 'PhoneNumber' | translate }}" name="phone" ngModel>
+                            </div>
+                        </div>
+                        
+                    
+                    </div>
+                  <div class="Verify">
+                      <button class="btn getStarted" type="submit" *ngIf="!loading"><span> {{ 'SignUp' | translate }}</span></button>
+                      <a class="loading" *ngIf="loading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                  </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

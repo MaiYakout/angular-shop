@@ -1,0 +1,122 @@
+<section class="noti bidsPage">
+    <div class="container">
+        <div class="row">
+            <h1 class="profile-header"> {{ 'MyProfile' | translate }}</h1>
+            <app-loading-page *ngIf="loadingPage"></app-loading-page>
+            <div class="col-md-6 " *ngIf="!loadingPage">
+                <form [formGroup]= "formGroup" (ngSubmit)="submit()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                 aria-describedby="emailHelp" placeholder=" {{ 'Name' | translate }}" formControlName="name" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                                 placeholder=" {{ 'CRNumber' | translate }}" formControlName="crNum" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                                 placeholder=" {{ 'Email' | translate }}" formControlName="email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                  placeholder=" {{ 'PhoneNumber' | translate }}" formControlName="phone" >
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="information.buyerOrSeller===2">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                  placeholder=" {{ 'companyName' | translate }}" formControlName="companyName" >
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="information.buyerOrSeller===2">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                  placeholder=" {{ 'website' | translate }}" formControlName="webSite" >
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="information.buyerOrSeller===2">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">{{ 'Logo' | translate }}</label>
+                                    <img [src]="information.companyLogo"  class="img-info">
+                                    <input type="file" class="form-control" (change)="handleFile($event , 1)">
+                                </div>                             
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="information.buyerOrSeller===2">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">{{ 'company_profile' | translate }}</label>
+                                    <img [src]="information.companyProfile" class="img-info">
+                                    <input type="file" class="form-control" (change)="handleFile($event , 2)">
+                                </div>                             
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="changePass" data-bs-toggle="modal" data-bs-target="#showBuild">
+                                
+                                {{ 'ChangePassword' | translate }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn getStarted btn-profile" type="submit" *ngIf="!loading"><span> {{ 'SaveChanges' | translate }}</span></button>
+                        <a class="loading" *ngIf="loading"> <i class="fa fa-circle-o-notch fa-spin"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="showBuild" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content"> 
+            <div class="modal-body bodyPrototype">
+                <span class="cloes" data-bs-dismiss="modal" aria-label="Close">
+                    <svg id="Circle_Button_" data-name="Circle Button " xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                        <rect id="Area_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="48" height="48" rx="24" fill="#f2f4f8"/>
+                        <g id="Icon_" data-name="Icon " transform="translate(14 14)">
+                          <rect id="Area_ICON:feather_x_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [ICON:feather/x][SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="20" height="20" fill="rgba(253,73,198,0.35)" opacity="0"/>
+                          <g id="Icon" transform="translate(-1 -1)">
+                            <line id="Line" x1="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                            <line id="Line-2" data-name="Line" x2="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                          </g>
+                        </g>
+                      </svg>
+                </span>
+                
+                <h1> {{ 'Changeyourpassword' | translate }}</h1>
+                <p> {{ 'Pleasewriteyour' | translate }}</p>
+                <form #Form="ngForm" (ngSubmit)="changePassword(Form)">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" {{ 'OldPassword' | translate }}" name="oldPassword" ngModel>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" {{ 'NewPassword' | translate }}" name="newPassword" ngModel> 
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="Verify">
+                                <button class="btn getStarted ng-inserted" type="submit" *ngIf="!loadingpass"><span>{{ 'Verify' | translate }}"</span></button>
+                                <a class="loading " *ngIf="loadingpass"> <i class="fa fa-circle-o-notch fa-spin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>

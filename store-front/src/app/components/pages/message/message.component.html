@@ -1,0 +1,48 @@
+<section class="noti" *ngIf="!loading">
+    <div class="container">
+        <div class="row">
+            <h1> {{ 'Messages' | translate }}<span class="number-noti"><span>{{messages.length}}</span></span> <span class="number-message">{{ 'Messages' | translate }}</span></h1>
+            <div *ngIf="!emptymessage">
+                <div class="col-md-12" *ngFor="let singleMessage of messages" (click)="getToChat(singleMessage.bidId)">
+                    <div class="card-noti " [ngClass]="{'active-noti ': !singleMessage.message.is_seen}">
+                        <h3>{{singleMessage.name}}
+                            <span class="date-message">{{singleMessage.time}}</span>
+                        </h3>
+                        <p>{{singleMessage.message.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="noAvailable" *ngIf="emptymessage">
+                <h3> {{ 'NoMessage' | translate }}</h3>
+                <p> {{ 'haveanymessagenow' | translate }}</p>
+            </div>
+
+            <!-- <div class="pagination">
+                <ul id="pagination">
+                    <li>
+                        <a class="previoesPaginate">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li><a class="active">1</a></li>
+                    <li><a>2</a></li>
+                    <li><a>3</a></li>
+                    <li><a>4</a></li>
+                    <li><a>5</a></li>
+                    <li><a>6</a></li>
+                    <li><a>7</a></li>
+                    <li>
+                        <a class="nextPaginate">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </li>
+                  </ul> 
+            </div> -->
+        </div>
+    </div>
+</section>
+<app-loading-page *ngIf="loading"></app-loading-page>

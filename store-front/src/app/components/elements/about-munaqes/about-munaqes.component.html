@@ -1,0 +1,20 @@
+<section class="abountMunaqes" *ngIf="!loadding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1> {{ 'AboutMunaques' | translate }}</h1>
+                <p>
+                    {{info.about}}
+                </p>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-2">
+                <img src="../../../../assets/images/aboutLogo.png">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>
+<!-- <div class="loading-home" *ngIf="loadding">
+    <app-loading-page style="margin: auto;"></app-loading-page>
+</div> -->

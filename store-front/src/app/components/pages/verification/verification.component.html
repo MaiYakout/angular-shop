@@ -1,0 +1,23 @@
+<section class="login-page">
+    <div class="model-login">
+        <div class="logoW logopassword" routerLink="/home">
+            <img src="../../../../assets/images/LogoW.png">
+        </div>
+        <div class=" body-reset body-password">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <h1 class="Verifycode">{{ 'Verifyyouraccount' | translate }}</h1>
+                    <p class="textLogin"> {{ 'sentaverification' | translate }} <span>{{email}}</span></p>
+                    <form #Form="ngForm" (ngSubmit)="submit(Form.value)">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ 'Enterthecode' | translate }}" name="code" ngModel>
+                          </div>
+                        <button class="btn getStarted" *ngIf="!loading" type="submit"><span>{{ 'Verify' | translate }}</span></button>
+                        <a class="loading" *ngIf="loading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

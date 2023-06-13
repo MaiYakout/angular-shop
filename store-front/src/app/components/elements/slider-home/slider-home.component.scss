@@ -1,0 +1,49 @@
+.wrapper{
+    width:100%;
+    padding-top: 20px;
+    text-align:center;
+  }
+
+  .arrow-next{
+    width: 30px !important;
+    height: 15px !important;
+    padding: 0px !important;
+    border: 0 !important;
+    display: inline !important;
+    margin-left: 10px !important;
+  }
+  .close-x{
+    position: absolute;
+    font-size: 22px;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 10;
+  }
+@media screen and (max-width: 900px) {
+  .slick-slide img{
+    width:100%;
+    height: 470px;
+  }
+  .slick-active img{
+    height: 500px;
+  }
+  .desc-slider {
+    padding: 15px 20px;
+    width: 84%;
+    height: 200px;
+}
+.desc-slider p{
+  height: 100px;
+  overflow: hidden;
+}
+.desc-slider-txt{
+  overflow: scroll;
+  height: 100px;
+}
+}
+.carousel{
+  height: 100% !important;
+}

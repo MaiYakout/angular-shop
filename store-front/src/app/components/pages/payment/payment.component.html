@@ -1,0 +1,97 @@
+<section class="noti bidsPage" >
+    <div class="container">
+        <div class="row">
+            <h1 class="profile-header"> {{ 'Offer' | translate }}
+            </h1>
+            <div class="bid_offer py-5" *ngIf="offer?.status ==1">
+                <div class="row allSelerOffer" >
+                    <div class="noAvailable" *ngIf="emptyPageOffer">
+                        <h3> {{ 'NoAvailableOffer' | translate }}</h3>
+                        <p>{{ 'SorryOffers' | translate }}</p>
+                    </div>
+                    <div class="row offerPayed" *ngIf="!emptyPageOffer">
+                        <div class="col-md-12" *ngFor="let item of bid_offer">
+                            <div class="card-noti sellerCon">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <img class="bidOfferImage" src="{{item?.seller?.companyLogo}}">
+                                    </div>
+                                    <div class="col-md-11">
+                                        <h3 style="margin-bottom: 0px !important;">
+                                            <span>{{item?.seller?.companyName}}</span>
+                                            <span class="date-message">#{{item?.seller?.id}}</span>
+                                        </h3>
+                                        <span>{{item?.seller?.name}}</span>
+                                        <h5 class="webOffer"><a href="{{item?.seller?.webSite}}" target="_blank">{{item?.seller?.webSite}}</a></h5>
+                                        <span class="offer-price">{{ 'SAR' | translate }} {{item.price}}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h4 class="conditionSeller col-md-10" >
+                                        <span class="condition">{{ 'Attatchements' | translate }}</span>
+                                        <span *ngIf="item.attachNormal.length != 0">
+                                            <span class="attachment-bids" *ngFor="let attach of item.attachNormal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="17.008" height="17.754" viewBox="0 0 17.008 17.754">
+                                                    <path id="Path_1371" data-name="Path 1371" d="M19.8,11.854l-7.47,7.47a4.88,4.88,0,0,1-6.9-6.9l7.47-7.47a3.253,3.253,0,1,1,4.6,4.6l-7.478,7.47a1.627,1.627,0,1,1-2.3-2.3l6.9-6.893" transform="translate(-3.5 -3.5)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                                </svg>
+                                            {{attach.name}}
+                                            </span>
+                                            <span class="downlod-boids">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.5" viewBox="0 0 19.5 19.5">
+                                                    <path id="Path_1372" data-name="Path 1372" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m4-5,5,5m0,0,5-5m-5,5V5" transform="translate(-4.25 -4.25)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                                    </svg>                                  
+                                            </span>
+                                        </span>
+                                        <span *ngIf="item.attachNormal.length === 0">
+                                            <span class="attachment-bids">
+                                                {{ 'NotFound' | translate }}
+                                            </span>
+                                        </span>
+                                        
+                                    </h4>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chooseOffer" *ngIf="offer?.status ==1 && singleData?.acceptedOffer == null ">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>{{'chooseOffer' | translate}}</h1>
+                        <p>{{ 'closedwon' | translate }}</p>
+                        <form [formGroup]= "formGroupSeller" (ngSubmit)="submitChooes()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <select class="form-control" id="exampleFormControlSelect1" formControlName="offer_id">
+                                            <option [ngValue]="null" [selected]="true" > {{ 'Choosesellername' | translate }}</option>
+                                            <option *ngFor="let item of bid_offer" [ngValue]="item.id">{{item.seller.name}}</option>
+                                            </select>
+                                            <span class="down"><i class="fas fa-angle-down"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <div class="Verify">
+                                        <button class="btn getStarted ng-inserted" type="submit" *ngIf="!SellerLoading"><span>{{ 'ChooseSeller' | translate }}</span></button>
+                                        <a class="loading " *ngIf="SellerLoading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="contactSeller" *ngIf="singleData?.acceptedOffer != null" >
+                <h1>{{ 'ContactWonSeller' | translate }}</h1>
+                <button class="btn getStarted " type="submit" (click)="chat(singleData)"><span>{{ 'ContactWonSeller' | translate }}</span></button>
+
+            </div>
+            <div class="paymentFailed" *ngIf="loading && offer?.status !== 1">
+                <h3>Sorry!! Payment Failed</h3>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,5 @@
+
+<app-tobbar-bids *ngIf="(router.url != '/comingSoon' && router.url != '/home' && router.url != '/loading' && router.url != '/login' && router.url != '/verification' && router.url != '/complete-profile')"></app-tobbar-bids>
+<router-outlet></router-outlet>
+<app-footer *ngIf="router.url != '/loading' && router.url !='/comingSoon'"
+></app-footer>

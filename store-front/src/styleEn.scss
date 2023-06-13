@@ -1,0 +1,2119 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$munaqes-primary: mat.define-palette(mat.$indigo-palette);
+$munaqes-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$munaqes-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$munaqes-theme: mat.define-light-theme((
+  color: (
+    primary: $munaqes-primary,
+    accent: $munaqes-accent,
+    warn: $munaqes-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($munaqes-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@500&family=PT+Sans&display=swap');
+$border : #D1D1D1;
+$text_bar : #222222;
+$text-hover: #868686;
+$text_color: #010131;
+$PrimaryColor :#1E805D;
+$secondColor :#1e805d5c;
+$backPrimaryColor:#F2F7F8;
+$textPragraph:#646464;
+$hoursColor : #CC0000;
+$hoursSecondColor : #cc000036;
+$Process :#EA7500;
+$backProcess :#ea750042;
+body  , p , a , label , button{
+    font-family: 'PT Sans', sans-serif;
+}
+h1 ,h2 ,h3 , h4 ,h5 , h6{
+    font-family: 'M PLUS 1', sans-serif;
+}
+.body_logo {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.body_logo .logo {
+	display: block;
+	padding: 2px 15px 3px;
+	text-align: center;
+	animation: 8s animation-full 0.5s ease-in forwards;
+  position: relative;
+}
+.body_logo img{
+    width: 215px;
+    height: 45px;
+}
+.body_logo .logo__inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+
+	width: 0;
+	animation: 8s animation-inner 0.5s ease-in forwards;
+}
+.navbar-brand img{
+    width: 215px;
+    height: 45px;
+}
+.navbar ul{
+    margin: auto;
+}
+.nav-item{
+    margin: 0px 16px;
+    cursor: pointer;
+}
+.request-btn{
+    padding: 17px 26px;
+}
+.navbar,.abountMunaqes ,.bids{
+    margin: 0px 0px !important;
+}
+.buttonsLOg{
+    margin: 0px 8px;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: $text_bar;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+    color: $text-hover;
+}
+.navbar-sample{
+    position: absolute;
+    width: 100%;
+    z-index: 10000;
+    margin: 0px !important;
+    padding: 20px 82px !important;
+    color: #fff;
+}
+.getStarted{
+    background: linear-gradient(to right, #fff 50%, $PrimaryColor 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
+    color: #fff;
+    padding: 3px 22px;
+    font-size: 16px; 
+    border-radius: 20px;
+}
+.getStarted:hover{
+    background-position: left bottom;
+    border: 1px solid $PrimaryColor;
+}
+.getStarted span{
+    transition: all .6s ease-out;
+    display: block;
+    color: #fff;
+}
+.getStarted:hover span{
+    color: $PrimaryColor;
+}
+.getStarted:hover svg path{
+    transition: all .6s ease-out;
+    fill: $PrimaryColor;
+}
+.logIn{
+    background: linear-gradient(to right, $PrimaryColor 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
+    border: 1px solid $border;
+    color: $text_color;
+    padding: 3px 49px;
+    font-size: 16px; 
+    border-radius: 100px;
+}
+.bodyPrototype span.cloes svg{
+    width: 35px;
+}
+.logIn:hover{
+    background-position: left bottom;
+    border: 1px solid $PrimaryColor;
+}
+.logIn span{
+    transition: all .6s ease-out;
+  display: block;
+  color: $PrimaryColor;
+}
+.logIn:hover span{
+    color: #fff;
+}
+.getStarted svg{
+    margin-left: 9px;
+}
+.btn-previous{
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 190px;
+    text-align: center;
+    z-index: 100;
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+.btn-next{
+    position: absolute;
+    right: 0;
+    top: 40%;
+    width: 190px;
+    text-align: center;
+    z-index: 100;
+}
+.slick-dots li.slick-active button:before{
+    color: #fff !important;
+}
+.slick-dots {
+    bottom: 36px !important;
+}
+.slick-dots li button:before{
+    color: #fff !important;
+}
+.overFlowSlider{
+    position: absolute;
+    top: 190px;
+    color: #fff;
+    left: 25%;
+    width: 50%;
+}
+.overFlowSlider h1{
+    color: #fff;
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    letter-spacing: 1.2px;
+    line-height: 1;
+}
+.btnSlider{
+    margin: 0px 8px;
+}
+.btnSlider.logIn{
+    padding: 3px 28px;
+}
+.abountMunaqes{
+    padding: 100px 0px ;
+}
+.abountMunaqes h1{
+    font-size: 52px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.abountMunaqes img{
+    width: 100%;
+    height: 150px;
+}
+.abountMunaqes p{
+    font-size: $textPragraph;
+    font-size: 16px;
+}
+.videoHome{
+    width: 100%;
+    height: 574px;
+    overflow: hidden;
+    position: relative;
+}
+.videoHome img {
+    width: 100%;
+    height: 100%;
+  }
+  .overFlowVideo{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      background-color: rgba(0,0,0,0.3);
+      color: #fff;
+      position: absolute;
+      top: 0px;
+  }
+  .overFlowVideo .videoOver{
+      margin: auto;
+  }
+  .bids{
+      padding: 92px 0px 50px;
+  }
+  .bids h1{
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      color: $text_color;
+  }
+  .bids p{
+      margin-bottom: 42px;
+      color: $border;
+      font-size: 16px;
+      font-weight: 500;
+      
+  }
+  .header-bids{
+      text-align: center;
+      display: flex;
+  }
+  .text-bids {
+      margin: auto;
+      text-align: center;
+      width: 30%;
+  }
+  .card-bids{
+      border: 1px solid #E5E5E5;
+      background-color: $backPrimaryColor;
+      width: 100%;
+      border-radius: 16px;
+      position: relative;
+      padding: 0px 0px 90px;
+      margin-bottom: 17px;
+      cursor: pointer;
+  }
+  .card-bids h2{
+      padding-top:23px ;
+  }
+  .body-bids{
+      padding: 0px 23px;
+  }
+  .footer-bidw{
+    position: absolute;
+    bottom: 0px;
+    padding: 20px 23px 0px;
+    width: 100%;
+    background-color: #fff;
+    left: 0px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    min-height: 70px;
+    height: auto;
+  }
+  .public-bids{
+      margin-left: 5px;
+  }
+  .body-bids h2{
+      color: $text_color;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 17px;
+  }
+  .pricePublic{
+      color: $PrimaryColor;
+      font-weight: 700;
+  }
+  .body-bids h2 .code-bids{
+      margin-left: 20px;
+      color: $border;
+  }
+  .body-bids h2 .offer-bids{
+      float: right;
+      color: $PrimaryColor;   
+  }
+  .body-bids h3{
+      font-weight: 500;
+      font-size: 18px;
+      color: $text_color;
+      margin-bottom: 20px;
+      display: flex;
+  }
+  .body-bids h3 .location-bid{
+      margin: auto 25px;
+  }
+  .bid-type{
+      margin: auto 0px;
+  }
+  .body-bids h3 .location-bid svg{
+      margin-left: 10px;
+      
+  }
+  .public-bids{
+    color: $PrimaryColor;
+    background-color: $secondColor;
+    padding: 0px 19px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .cancle-bids{
+    color: $hoursColor;
+    background-color: $hoursSecondColor;
+    padding: 0px 19px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .apply-bids button{
+    padding: 3px 57px;
+    float: right;
+  }
+  .downlod-boids{
+      margin: auto 6px;
+  }
+  .body-bids h4 , .body-bids .condition{
+      color: $text_color;
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+  }
+  .body-bids h4{
+      margin-top: 20px;
+  }
+  .body-bids .condition{
+      margin: auto 20px auto 0px;
+  }
+  .attachment-bids{
+    margin: auto 10px auto 0px;
+    background-color: #fff;
+    color: $text_color;
+    padding: 3px 20px;
+    border-radius: 18px;
+  }
+  .attachment-bids svg{
+      margin-right: 9px;
+  }
+  .footer-bidw h2{
+      font-size: 16px;
+      font-weight: 500;
+      color: $text_color;
+  }
+  .published{
+      font-weight: bold;
+      margin-right: 25px;
+      margin-left: 10px;
+  }
+  .hours-bids {
+      float: right;
+      color: $hoursColor;
+      background-color: $hoursSecondColor;
+      padding: 6px 15px;
+      border-radius: 100px;
+  }
+  .hours-bids svg{
+      margin-right: 10px;
+  }
+  .seeAll-bids ,.seeAll-Publish{
+      display: flex;
+      margin-top: 10px;
+  }
+  .seeAll-Publish button{
+      width: 160px;
+  }
+  .seeAll-bids button{
+      background: linear-gradient(to right, $PrimaryColor 50%, white 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        transition: all .5s ease-out;
+      border: 1px solid $PrimaryColor;
+      border-radius: 100px;
+      padding: 3px 53px;
+      margin: auto;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 1s ease;
+  }
+  .seeAll-bids button:hover{
+    background-position: left bottom;
+}
+.seeAll-bids button span{
+    transition: all .6s ease-out;
+  display: block;
+  color: $PrimaryColor;
+}
+.seeAll-bids button:hover span{
+    color: #fff;
+}
+.footer{
+    background-color: $PrimaryColor;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 30px 0px;
+}
+.statistics img{
+    width: 100%;
+    height: 410px;
+    
+}
+.statistics{
+    padding-bottom: 66px;
+    position: relative;
+}
+.footer-statistics{
+    position: absolute;
+    bottom: 0px;
+    padding: 75px 105px;
+    right: 0px;
+    width: 80%;
+    background-color: $backPrimaryColor;
+}
+.footer-statistics h1{
+    font-size: 60px;
+    font-weight: bold;
+    color: $PrimaryColor;
+    margin-bottom: 24px;
+    text-align: center;
+}
+.footer-statistics p{
+    color: $text_color;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+}
+.Verify a{
+    margin: auto;
+    width: 50%;
+}
+.login-page{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $PrimaryColor;
+    top: 0px;
+    display: flex;
+    overflow-y: scroll;
+    z-index: 1;
+}
+.login-page::-webkit-scrollbar {
+    display: none;
+  }
+.logoW{
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.logopassword{
+    position: absolute;
+}
+.model-login {
+    width: 100%;
+    display: grid;
+}
+.model-login img{
+    margin:20px auto;
+    width: 205px;
+    height: 42px;
+}
+.body-login{
+    width: 60%;
+    background-color: #fff;
+    padding: 50px;
+    background-image: url("assets/images/login.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    margin: auto;
+    border-radius: 16px;
+    background-size: 45% 100%;
+    min-height: 85%;
+}
+.RegisterNow{
+    width: 60%;
+}
+.body-reset{
+    width: 60%;
+    background-color: #fff;
+    padding: 20px;
+    margin: auto;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+.login-page h1{
+    font-size: 25px;
+    font-weight: bold;
+    color: $text_color;
+    margin-bottom: 15px;
+}
+.body-complete button{
+    width: 50% !important; 
+    margin: auto;
+}
+.Verify{
+    display: flex;
+    margin-top: 10px;
+}
+.login-page h2{
+    font-size: 18px;
+    font-weight: bold;
+    color: $text_color;
+    margin-bottom: 15px;
+}
+.login-page h2 span{
+    font-size: 16px;
+    font-weight: bold;
+    color: $PrimaryColor;
+    margin-left: 8px;
+    cursor: pointer;
+}
+.login-page button{
+    width: 100%;
+}
+.forgetPass{
+    font-size: 16px;
+    font-weight: bold;
+    color: $PrimaryColor;
+    margin-bottom: 43px;
+    cursor: pointer;
+}
+.SignFacebook{
+    font-size: 13px;
+    font-weight: bold;
+    margin: 32px 0px !important;
+    text-align: center;
+    position: relative;
+}
+.SignFacebook::after , .SignFacebook::before{
+    content: "";
+    position: absolute;
+    width: 35%;
+    height: 2px;
+    background-color: #D1D1D1;
+    top: 9px;
+}
+.SignFacebook::after{
+    left: 0px;
+}
+.SignFacebook::before{
+    right: 0px;
+}
+.social_login{
+    display: flex;
+}
+.social{
+    padding: 0px;
+    list-style: none;
+    margin: auto;
+    display: flex;
+    cursor: pointer;
+}
+.social li{
+    margin: 0px 16px;
+
+}
+.form-group{
+    margin: 5px 0px;
+}
+.form-control{
+    background-color: #F2F4F8 !important;
+    border-radius: 10px;
+    height: 35px;
+    color: $text_color !important;
+    border: 0px solid;
+}
+.textLogin{
+    font-size: 16px;
+    color: $textPragraph;
+    text-align: center;
+    margin-bottom: 20px !important;
+}
+.textComplete{
+    font-size: 16px;
+    color: $textPragraph;
+    margin-bottom: 20px;
+    width: 60%;
+}
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  .checkbox-group > * {
+    margin: 0.5rem 0.5rem;
+  }
+  
+  .checkbox-group-legend {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #9c9c9c;
+    line-height: 1.125;
+    margin-bottom: 1.25rem;
+  }
+  
+  .checkbox-input {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(100%);
+            clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  .checkbox-input:checked + .checkbox-tile {
+    border-color: $PrimaryColor;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    color: $PrimaryColor;
+  }
+  .checkbox-input:checked + .checkbox-tile:before {
+    transform: scale(1);
+    opacity: 1;
+    background-color: $PrimaryColor;
+    border-color: $PrimaryColor;
+  }
+  .checkbox-input:checked + .checkbox-tile .checkbox-icon, .checkbox-input:checked + .checkbox-tile .checkbox-label {
+    color: $PrimaryColor;
+  }
+  .checkbox-input:focus + .checkbox-tile {
+    border-color: $PrimaryColor;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
+  }
+  .checkbox-input:focus + .checkbox-tile:before {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .checkbox-tile {
+    display: grid;
+    width: 100%;
+    min-height: 7rem;
+    padding: 16px;
+    border-radius: 16px;
+    border: 2px solid $border;
+    background-color: #fff;
+    transition: 0.15s ease;
+    cursor: pointer;
+    position: relative;
+
+  }
+  .checkbox-tile:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #b5bfd9;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 0.25rem;
+    right: 0.25rem;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.25s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+  .checkbox-tile:hover {
+    border-color: $PrimaryColor;
+  }
+  .checkbox-tile:hover:before {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .checkbox-icon {
+    transition: 0.375s ease;
+    color: $text_color;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .checkbox-label {
+    color: $textPragraph;
+    font-size: 16px;
+    width: 90%;
+    transition: 0.375s ease;
+  }
+  .checkbox{
+      margin: 15px 0px;
+  }
+  .body-register .SignFacebook{
+    width: 50%;
+    margin: 32px auto !important;
+  }
+.textLogin span{
+    color: $text_color;
+    font-size: 16px;
+    font-weight: 700;
+}
+.Verifycode{
+    text-align: center;
+}
+/* The container */
+.container-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 10px 0px;
+}
+
+/* Hide the browser's default checkbox */
+.container-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.container-checkbox .checkmark {
+    position: absolute;
+    top: 17%;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-checkbox input:checked ~ .checkmark {
+    background-color: $PrimaryColor;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.container-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-checkbox .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+/* The container */
+.container-radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.container-radio .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container-radio input:checked ~ .checkmark {
+    background-color: $PrimaryColor;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.container-radio .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container-radio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container-radio .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+    width: 7px;
+    height: 13px;
+	border-radius: 50%;
+	background: white;
+}
+.tobBids .navbar-light .navbar-nav .nav-link{
+    color: $text_color ;
+    font-weight: 500;
+    font-family: 'PT Sans', sans-serif;
+    margin: 16px 0px;
+    padding: 0px 10px;
+}
+.active a.nav-link{
+    color: $PrimaryColor !important;
+}
+.bidsPage,.noti{
+    padding: 46px 0px;
+    min-height: 450px;
+}
+.bid-detailes{
+    min-height: 450px;
+}
+.tobBids{
+    box-shadow: 5px 5px 5px #65656529;
+    height: 100px;
+    display: grid;
+}
+.tobBids .navbar{
+    margin: auto 0px !important;
+}
+.bidsPage h1{
+    font-size: 25px;
+    font-weight: bold;
+    color: $text_color;
+    margin-bottom: 25px;
+}
+/*
+ CSS for the main interaction
+*/
+.tabset > input[type="radio"] {
+    display: none;
+  }
+  
+  .tabset .tab-panel {
+    display: none;
+  }
+  .tab-panels{
+      min-height: 570px;
+  }
+  .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+  .tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+  .tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+  .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+  .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+  .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+    display: block;
+  }
+  
+  
+  .tabset > label {
+    position: relative;
+    display: inline-block;
+    padding: 13px 0px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid #D1D1D1;
+    width: 160px;
+    color: $textPragraph;
+    font-size: 16px;
+  }
+  .activeBids{
+      
+      border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+  }
+  .PastBids{
+    border-bottom-right-radius: 6px;
+      border-top-right-radius: 6px;
+}
+  
+  .tabset > label:hover,
+  .tabset > input:focus + label ,
+  .tabset > input:checked + label {
+    background-color: $PrimaryColor;
+    color: #fff;
+  }
+  
+  .tabset > label:hover::after,
+  .tabset > input:focus + label::after,
+  .tabset > input:checked + label::after {
+    background: $PrimaryColor;
+  }
+  
+  .tabset > input:checked + label {
+    margin-bottom: -1px;
+  }
+  
+  .tab-panel {
+    padding: 30px 0;
+  }
+  .noAvailable {
+      display: grid;
+  }
+  .noAvailable h3{
+      margin: 37px auto 15px;
+      font-size: 25px;
+      font-weight: bold;
+      color: $text_color;
+  }
+  .noAvailable p{
+      margin: 0px auto 35px;
+      font-size: 16px;
+      color: $textPragraph;
+      width: 25%;
+      text-align: center;
+  }
+  .noAvailable button{
+      width: 160px;
+      margin: auto;
+  }
+  .bidSeller{
+      height:170px !important;
+  }
+  .fileUp{
+      height: 110px !important;
+  }
+  .fileUpload {
+    background: #f2f4f8;
+    border-radius: 15px;
+    color: $text_color;
+    font-size: 16px;
+    padding: 12px;
+    position: relative;
+    height: 110px;
+    cursor: pointer;
+    width: 100%;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 100%;
+    height: 110px;
+  cursor: pointer;
+}
+.fileUpload svg{
+    float: right;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.activeBid{
+    color: $textPragraph;
+    font-size: 16px;
+        font-weight: 600;
+        margin-left: 20px;
+}
+.allbids select{
+    float: right;
+    width: 130px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.pagination{
+    display: flex;
+}
+#pagination {
+    margin: 35px auto 0px;
+    padding: 0;
+    text-align: center
+  }
+  #pagination li {
+    display: inline-table;
+    height: 24px;
+    width: 24px;
+  }
+  #pagination li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #09101D;
+    width: 24px;
+    height: 24px;
+    margin: 0px 6px;
+    cursor: pointer;
+  }
+  
+  /* Active and Hoverable Pagination */
+  #pagination li a {
+    border-radius: 5px;
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s
+      
+  }
+  #pagination li a.active {
+    background-color: $PrimaryColor;
+    color: #fff
+  }
+  #pagination li a:hover:not(.active) {
+    background-color: #ddd;
+  } 
+  
+  /* border-pagination */
+  .b-pagination-outer {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+    display: flex
+  }
+  #border-pagination {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center
+  }
+  #border-pagination li {
+    display: inline;
+  
+  }
+  #border-pagination li a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    float: left;
+  
+  }
+  #border-pagination li a {
+    -webkit-transition: background-color 0.4s;
+    transition: background-color 0.4s
+  }
+  #border-pagination li a.active {
+    background-color: $PrimaryColor;
+    color: #fff;
+  }
+  #border-pagination li a:hover:not(.active) {
+    background: #ddd;
+  }
+  .previoesPaginate ,.nextPaginate{
+      background-color: $border;
+      height: 24px;
+      width: 24px;
+      padding: 0px !important;
+  }
+  .previoesPaginate{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+  .nextPaginate{
+      background-color: $PrimaryColor !important;
+  }
+  .previoesPaginate svg , .nextPaginate svg{
+      margin: auto;
+  }
+  .btn-Create{
+      float: right;
+      width: 160px;
+  }
+  .noti{
+      padding: 37px 0px;
+  }
+  .noti h1{
+      font-size: 25px;
+      font-weight: bold;
+      color: $text_color;
+      margin-bottom: 25px;
+  }
+ .number-noti{
+      display: inline-flex;
+      width: 30px;
+      height: 30px;
+      background-color: $backPrimaryColor;
+      color: $PrimaryColor;
+      margin-left: 25px;
+      border-radius: 50%;
+  }
+.number-noti span{
+      margin: auto;
+      font-size: 16px;
+      font-weight: 500;
+  }
+  .number-message{
+      color: $text_color;
+      margin-left: 10px;
+      font-size: 16px;
+      font-weight: 500;
+  }
+  .card-noti{
+      padding: 25px;
+      margin-bottom: 16px;
+      border: 2px solid $border;
+      border-radius: 16px;
+      cursor: pointer;
+  }
+  .card-noti h3{
+      font-size: 18px;
+      font-weight: bold;
+      color: $text_color;
+      margin-bottom: 15px;
+  }
+  .card-noti p{
+      font-size: 16px;
+      color: $textPragraph;
+  }
+  .active-noti{
+    border: 2px solid $PrimaryColor;
+  }
+  .active-noti h3{
+      color: $PrimaryColor;
+  }
+  .active-noti p{
+      color: $text_color;
+  }
+  .card-noti .hours-bids{
+      float: none;
+      margin-left: 25px;
+      font-size: 14px;
+      font-weight: 500;
+  }
+  
+  .date-message{
+      color: $border;
+      font-size: 18px;
+      font-weight: 500;
+      margin-left: 35px;
+  }
+  .active-noti .date-message{
+    color: $text_color;
+}
+.profile-header h1{
+    margin-bottom: 35px;
+}
+.btn-profile ,.btn-apply{
+    width: 100%;
+}
+.btn-apply{
+    margin-top: 35px;
+}
+.changePass{
+    margin-top: 16px;
+    color: $PrimaryColor;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 35px;
+    cursor: pointer;
+}
+.bodyPrototype{
+    padding: 60px;
+}
+.bodyPrototype h1{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: $text_color;
+}
+.bodyPrototype p{
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: $textPragraph;
+}
+.modal-content{
+    border-radius: 16px;
+}
+.modal-content .Verify button{
+    margin: auto;
+    width: 50%;
+}
+.bodyPrototype span.cloes{
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    cursor: pointer;
+}
+.Approve-reject{
+    float: right;
+}
+.code-sellar{
+    color: $text_color;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+.Approve-reject button{
+    margin: 0px 10px;
+    border:1px solid $PrimaryColor;
+    color: $PrimaryColor;
+    padding: 10px 25px;
+    border-radius: 18px;
+}
+.Approve-reject button i{
+    margin-right: 7px;
+}
+.contact-sellar{
+    padding: 0px;
+    list-style: none;
+    margin-bottom: 25px;
+    display: flex;
+}
+.contact-sellar li{
+    float: left;
+    margin-right: 24px;
+    color: $text_color;
+    font-size: 16px;
+    font-weight: 500;
+}
+.contact-sellar li i{
+    margin-right: 8px;
+    color: $PrimaryColor;
+}
+.conditionSeller .condition{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 35px;
+    color: $text_color;
+    margin-right: 18px;
+}
+.conditionSeller .attachment-bids{
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 10px;
+    background-color: #fff;
+    border-radius: 18px;
+    cursor: pointer;
+}
+.attachment-bids a{
+    color: $text_color !important;
+    text-decoration: none !important;
+    display: flex;
+}
+.conditionSeller .attachment-bids svg{
+    fill: $PrimaryColor;
+    margin-right: 8px;
+}
+.Approved{
+    background-color: $PrimaryColor;
+    color: #fff !important;
+}
+.invited_bid{
+    float: right;
+    background-color: $secondColor ;
+    color: $PrimaryColor;
+    padding: 7px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 100px;
+    margin-right: 15px;
+}
+.profile-header .hours-bids{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.apply_bid .fileUpload input.upload , .apply_bid .fileUpload{
+    height: 48px !important;
+    width: 100%;
+}
+
+.apply-bid-detailes .card-bids{
+    padding-bottom: 25px;
+}
+.apply-bid-detailes h4{
+    font-size: 16px;
+    font-weight: 500;
+    color: $text_color;
+}
+.apply-bid-detailes h4 .published{
+    margin-left: 9px;
+    font-weight: bold;
+}
+.apply-bid-detailes .offer-bids{
+    cursor: pointer;
+}
+.Closed-Bids .Attatchements{
+    background-color: $backPrimaryColor !important;
+    border-top: 1px solid $border;
+    padding: 23px 23px 0px;
+}
+.Attatchements .condition{
+    color: $text_color;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.applied-Bids .attachment-bids , .Closed-Bids .attachment-bids{
+    font-size: 14px;
+    font-weight: 500;
+}
+.applied-Bids .attachment-bids{
+    display: flex;
+}
+.my-price{
+    float: right;
+    color: $PrimaryColor;
+    font-size: 18px;
+    font-weight: bold;
+}
+.applied-Bids .apply-bids button{
+    padding: 3px 24px;
+    margin-bottom: 20px;
+}
+.card-close-bid{
+    padding-bottom: 23px !important;
+}
+.Process{
+    color: $Process;
+    background-color: $backProcess;
+    padding: 7px 30px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.closed{
+    color: $hoursColor;
+    background-color: $hoursSecondColor;
+    padding: 3px 30px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.Excuse{
+    width: 160px;
+}
+.right-price{
+    display: flex;
+    float: right;
+}
+.right-price .my-price{
+    margin: auto;
+}
+.close-btn{
+    color: $hoursColor;
+    font-size: 16px;
+    font-weight: bold;
+}
+.Bid-excuse-reason
+{
+    text-align: center;
+    display: flex;
+}
+.Bid-excuse-reason p{
+    width: 50%;
+    margin: auto;
+    margin-bottom: 25px;
+}
+.bid-detailes .card-bids{
+    padding: 10px 0px;
+    cursor: initial;
+}
+.modal-backdrop.show{
+    display: none;
+}
+.modal{
+    background-color: #0000006e;
+}
+.bid-detailes .card-bids .body-bids ,.bid-detailes .card-bids .Attatchements{
+    padding: 0px 0px;
+}
+.bid-detailes .card-bids h2{
+    font-size: 25px ;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+.code-bids{
+    font-size: 18px;
+    font-weight: bold;
+    color: $textPragraph;
+}
+.Edit{
+    background: linear-gradient(to right, $PrimaryColor 50%, $backPrimaryColor 50%) ;
+    background-size: 200% 100% ;
+    background-position: right bottom ;
+    width: 160px;
+    margin-left: 35px;
+    padding: 13px 0px !important;
+}
+
+  .loading{
+    border: 1px solid #1E805D;
+    color: #fff;
+    padding: 8px 22px;
+    font-size: 16px;
+    border-radius: 100px;
+    width: 100%;
+    background-color: #1e805d;
+    display: flex;
+  }
+  .loading:hover{
+      color: #fff !important;
+  }
+  .loading i{
+      margin: auto;
+  }
+  .loading img{
+      margin: auto;
+      width: 20px;
+      height: 20px;
+  }
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #f2f4f8;
+}
+.mat-form-field-underline {
+    display: none !important;
+  }
+ .bid-detailes .card-bids .Attatchements {
+    padding: 23px 0px 0px !important;
+    cursor: initial;
+  }
+  .invalidSeller{
+    width: 90%;
+    height: 100px;
+    overflow-x: scroll;
+    display: inline-flex;
+  }
+  .invalidSeller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .date-bid h2{
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #010131 !important;
+    margin-bottom: 20px !important;
+  }
+.chat-component{
+    padding: 37px 0px;
+}
+  .chat-component h3{
+      font-size: 25px;
+      font-weight: bold;
+      color: $text_color;
+      display: flow-root;
+  }
+  .chat-component .active-noti h3{
+    color: $PrimaryColor !important;
+
+}
+.bid_offer{
+    padding: 80px 0px !important;
+    border-top: 1px solid $border;
+}
+.bid_offer h2{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: $text_color;
+}
+.bid_offer h2 span ,.date-offer{
+    margin-left: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    color: $textPragraph;
+}
+.date-offer{
+    font-weight: 100;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    display: inline-block;
+}
+.bid_offer h5{
+    font-size: 18px !important;
+    font-weight: bold !important;
+    color: $text_color;
+}
+.border-right:before{
+    content: '';
+    height: 60%;
+    width: 1px;
+    background-color: $border;
+    position: absolute;
+    right: 15%;
+    top: 20%;
+}
+.fa-arrow-circle-right{
+    margin-left: 9px;
+}
+.bid_offer .col-md-4{
+    position: relative;
+}
+.border-right{margin-bottom: 35px;}
+.bid_offer .col-md-4:nth-child(3) .border-right::before,.bid_offer .col-md-4:nth-child(6) .border-right::before,.bid_offer .col-md-4:nth-child(9) .border-right::before{
+    position: initial !important;
+}
+.bid_offer .noAvailable{
+    display: grid;
+    width: 50%;
+    margin: auto;
+    box-shadow: 1px 4px 24px #0000001a;
+    padding: 50px;
+    border-radius: 16px;
+    background-color: #fff;
+
+}
+.bid_offer .noAvailable p{
+    width: 100%;
+}
+.overFlowOffer{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffffd4;
+    z-index: 100;
+}
+.allSelerOffer{
+    min-height: 300px;
+    position: relative;
+}
+.buyerReplay{
+    background-color: $backPrimaryColor;
+    padding: 16px 23px;
+    border-top: 1px solid $border;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+.buyerComment{
+    padding: 25px;
+}
+.allReply{
+    border-bottom: 1px solid $border;
+    margin-bottom: 20px;
+}
+.allReply:last-child{
+    border-bottom: 0px solid $border;
+}
+.cardReply h3{
+    color: $PrimaryColor;
+}
+.cardReply{
+    padding: 0px !important;
+}
+.replyComment{
+    border-top:1px solid $border ;
+    padding: 25px;
+}
+.btn-reply{
+    width: 100%;
+}
+.AddComment {
+    float: right;
+}
+.ShowAddComment{
+    border: 1px solid $border;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 16;
+}
+.offer-price{
+    float: right;
+    color: $PrimaryColor;
+    font-size: 22px;
+    font-weight: bold;
+}
+.btn-choose{
+    float: right;
+    width: 158px;
+}
+.sellerCon h3{
+    margin-bottom: 25px !important;
+}
+.sellerCon h4{
+    margin-top: 15px;
+}
+
+.carousel-indicators{
+    display: initial !important;
+    margin: auto !important;
+}
+.carousel-indicators > button{
+    background-color: #fff !important;
+}
+.chatPage{
+    padding: 35px 0px;
+}
+.chatPage h1{
+    font-size: 25px;
+    font-weight: bold;
+    color: $text_color;
+    margin-bottom: 25px;
+}
+.container-chat{
+    height: 600px;
+    overflow-y: scroll;
+    padding: 0px 15px;
+}
+.card-chat-sender{
+    padding: 25px 36px;
+    background-color: $PrimaryColor;
+    color: #fff;
+    border-radius: 0px 60px 60px 60px;
+    margin-bottom: 15px;
+    width: auto;
+}
+.card-chat-reciever{
+    padding: 25px 36px;
+    background-color: $backPrimaryColor;
+    color: $text_color;
+    border-radius: 60px 0px 60px 60px;
+    margin-bottom: 15px;
+    width: auto;
+    float: right;
+}
+.card-chat-sender p , .card-chat-reciever p {
+    margin-bottom: 0px;
+}
+.container-chat::-webkit-scrollbar{
+    display: none;
+}
+
+.seller-info-chat h3 .location-bid{
+    margin: 0px !important;
+}
+.seller-info-chat h3 .location-bid svg{
+    margin-left: 0px !important;
+    margin-right: 9px;
+}
+.seller-info-chat h3 .location-bid i{
+    color: $PrimaryColor;
+    margin-right: 9px;
+}
+.chatPage .body-bids{
+    padding: 0px !important;
+}
+.seller-info-chat{
+    padding: 0px 25px 25px;
+    border-bottom: 1px solid $border;
+}
+.bid-chat{
+    padding: 25px 25px 0px;
+}
+.chatPage .apply-bid-detailes .card-bids{
+    margin-top: 35px;
+}
+.send-message{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 158px;
+    height: 66px;
+    border-radius: 49px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.send{
+    position: relative;
+    margin-top: 37px;
+}
+.send input{
+    height: 66px;
+    border-radius: 49px;
+    width: 100%;
+    padding-left: 50px;
+}
+.loading-home{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    z-index: 1000;
+    top: 0;
+}
+#showVideo video{
+    width: 100%;
+}
+.slider-heght{
+    height: 500px;
+}
+.login-page button{
+    margin-top: 10px;
+}
+.chooseSeller button{
+    float: right;
+}
+.send-mob{
+    display: none;
+}
+.btn-log-Out{
+    width: 100%;
+}
+.form-group{
+    position: relative;
+}
+.form-group span.down{
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    color: $textPragraph;
+}
+.seeAll-bids button span{
+    display: inline-block !important;
+}
+.body-password{
+    width: 45%;
+    margin: auto;
+}
+.fa-times{
+    top: 6px;
+    position: absolute;
+}
+.ReLaunch{
+    margin-left: 0px ;
+    margin-bottom: 20px;
+}
+.fa-sign-out-alt,.userTopBar{
+    margin-right: 8px;
+}
+
+.body-bids h4 span:nth-child(2) .attachment-bids{
+    display: flex;
+    margin-top: 0px;
+
+}
+.Attatchements h4 span:nth-child(2){
+    display: inline-flex;
+
+}
+.Attatchements h4{
+    overflow-x: scroll;
+}
+.Attatchements h4::-webkit-scrollbar{
+    display: none;
+}
+.body-bids h4 span:nth-child(2){
+    display: flex;
+
+}
+.body-bids h4{
+    overflow-x: scroll;
+}
+.body-bids h4::-webkit-scrollbar{
+    display: none;
+}
+@media screen and (max-width: 900px) {
+    .navbar, .abountMunaqes, .bids{
+        margin: 0px 7px !important;
+    }
+    .btn-previous ,.btn-next{
+        width: 70px !important;
+    }
+    .overFlowSlider{
+        top: 80px !important;
+        left: 12% !important;
+        width: 70% !important;
+    }
+    .btnSlider {
+        margin: 5px 8px !important;
+    }
+    .abountMunaqes {
+        padding: 0px 0px !important;
+        margin-top: 40px !important;
+    }
+    .abountMunaqes h1 ,.bids h1 ,.footer-statistics h1{
+        font-size: 30px !important;
+    }
+    .footer-statistics h1{
+        margin-bottom: 5px !important;
+    }
+    .footer-statistics p{
+        font-size: 20px !important;
+    }
+    .abountMunaqes img{
+        margin-bottom: 20px !important;
+    }
+    .text-bids{
+        width: 100% !important;
+    }
+    .body-bids h4{
+        overflow-x: scroll !important;
+        margin-top: 0px !important;
+    }
+    .body-bids h4 span:nth-child(2){
+        display: flex;
+    }
+    .overFlowSlider h1{
+        font-size: 25px;
+    }
+    .videoHome{
+        height: 170px !important;
+    }
+    .overFlowVideo .videoOver svg{
+        width: 45px;
+        height: 45px;
+    }
+    .body-bids h2 .code-bids{
+        margin-left: 4px !important;
+    }
+    .body-bids h2 ,.code-bids ,.body-bids h3
+    {
+        font-size: 14px !important;
+    }
+    .attachment-bids{
+        padding: 8px 13px !important;
+        display: flex !important;
+    }
+    .body-bids{
+        padding: 0px 23px 0px !important;
+
+    }
+    .footer-statistics{
+        position: relative !important;
+        bottom: 91px !important;
+        padding: 35px 0px !important;
+        width: 90% !important;
+        margin: auto !important;
+    }
+    .footer{
+        padding: 30px 10px !important;
+    }
+    .logoW{
+        position: relative !important;
+        width: 100% !important;
+        top: 0px !important;
+        margin-bottom: 20px !important;
+    }
+    .body-login{
+        width: 95% !important;
+        padding: 20px 29px !important;
+        background-image: none !important;
+
+    }
+    .body-reset{
+        width: 95% !important;
+        padding: 20px 20px !important;
+        margin-bottom: 20px;
+    }
+    .login-page h1{
+        font-size: 18px !important;
+    }
+    .login-page h2{
+        font-size:  14px !important;
+    }
+    .SignFacebook{
+        width: 100% !important;
+        margin: 15px auto !important;
+    
+    }
+    .login-page button{
+        margin-top: 15px !important;
+        width: 100% !important;  
+    }
+    .login-page{
+        overflow-y: scroll;
+        padding: 20px 0px !important;
+    }
+    .navbar ul{
+        margin: 0 !important;
+        width: 100% !important;
+        position: absolute !important;
+        z-index: 1 !important;
+        background-color: #fff !important;
+        left: 0 !important;
+    }
+    .navbar ul button{
+        width: 100% !important;
+        padding: 10px !important;
+        margin-bottom: 10px !important;
+    }
+    .slider-heght{
+        height: 450px !important;
+    }
+    .carousel{
+        height: 100% !important;
+    }
+    .attachment-bids a{
+        display: flex !important;
+    }
+    .tobBids .navbar{
+        margin:auto 0px !important;
+    }
+    .loading{
+        width: 100% !important;
+    }
+    .bidsPage,.noti{
+        padding: 46px 0px !important;
+        min-height: 500px !important;
+    }
+    .bidsPage h1{
+        font-size:  20px !important;
+        margin-bottom: 15px !important;
+    }
+    .btn-Create {
+        padding: 0 !important;
+        height: 45px !important;
+    }
+    span.allbids{
+        margin-top: 15px !important;
+        display: inline-block !important;
+    }
+    .bid-detailes .body-bids, .chat-component , .applied-Bids .body-bids {
+        padding: 0px 23px !important
+    }
+    .bid-detailes .card-bids .Attatchements{
+        padding: 10px 23px !important;
+    }
+    .invalidSeller{
+        margin-top: 15px !important;
+        height: auto !important;
+    }
+    .bid_offer{
+        padding:23px !important;
+    }
+    .bid_offer h2{
+        margin-bottom: 15px;
+    }
+    .bid_offer .noAvailable{
+        width: 100% !important;
+        padding: 15px !important;
+        text-align: center !important;
+    }
+    .noAvailable h3{
+        margin-top: 0px !important;
+        font-size: 20px !important;
+    }
+    .bodyPrototype{
+        padding: 30px 15px !important;
+    }
+    .bodyPrototype h1{
+        font-size: 20px !important;
+    }
+    .bodyPrototype span.cloes{
+        top: 10px !important; 
+        right: 10px !important;
+    }
+    .bodyPrototype span.cloes svg{
+        width: 35px !important;
+    }
+    .seeAll-bids{
+        display: flex !important;
+    }
+    .body-bids h2 .offerBids{
+        display: contents !important;
+        width: 100% !important;
+    }
+    .seeAll-bids .btn-res{
+        width: 30% !important;
+        padding: 0px !important;
+        margin-left: auto !important;
+    }
+    .clear-res{
+        display: none !important;
+    }
+    button.ng-inserted{
+        width: 100% !important;
+    }
+    .noti h1{
+        margin-bottom: 15px !important;
+        font-size: 20px !important;
+    }
+    .number-noti{
+        margin-left: 5px !important;
+    }
+    .card-noti .hours-bids{
+        display: inline-block !important;
+        margin: 0px !important;
+    }
+    .noAvailable p{
+        width: 100%;
+    }
+    .noAvailable button{
+        margin-bottom: 20px !important;
+    }
+    .bid-detailes .card-bids h2{
+        margin-bottom: 30px !important ;
+    }
+    .offerBidsSeller button{
+        padding: 0px !important;
+    }
+    .Attatchements h4 span:nth-child(2){
+        display: flex;
+    }
+    .chatPage {
+        padding: 10px 0px !important;
+    }
+    .send input{
+        height: 48px !important;
+        border-radius: 18px !important;
+        padding-left: 15px !important;
+    }
+    .send-message{
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 100% !important;
+        display: flex !important;
+        padding: 0px !important;
+    }
+    .send-web{
+        display: none !important;
+    }
+    .send-mob{
+        display: block;
+    }
+    .container-chat{
+        min-height: 370px !important;
+    }
+    .footer-bidw{
+        height: 90px !important;
+        padding: 10px 23px;
+    }
+    .bidOfferImage{
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 4px !important;
+        margin-right: 5px !important;
+      }
+      .Lastdateforapplying{
+          display: block;
+          margin-left: 0px !important;
+          margin-right: 0px !important;
+          font-weight: 100 !important;
+      }
+  }
+  .bidOfferImage{
+    width: 100%;
+    height: 70px;
+    border-radius: 8px;
+    margin-right: 15px;
+  }

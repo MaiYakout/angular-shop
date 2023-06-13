@@ -1,0 +1,544 @@
+<section class="bid-detailes Closed-Bids" *ngIf="!loadingPage">
+    <div class="card-bids card-close-bid">
+        <div class="container">
+            <div class="body-bids">
+                <h2>{{singleData.name}} <span class="code-bids">#{{singleData.id}}</span> 
+                    <span class="offer-bids offerBids">
+                        <span class="seeAll-bids" *ngIf="singleData?.status === 1">
+                            <button data-bs-toggle="modal" data-bs-target="#closeBid" class="btn logIn btn-close-bid btn-res" type="submit"><span> {{ 'Colse' | translate }} <span class="clear-res">{{ 'Bid' | translate }}</span></span></button>
+                            <button class="btn logIn Edit btn-res" type="submit" (click)="edit(singleData.id)"><span>{{ 'Edit' | translate }}</span></button>
+                            <button data-bs-toggle="modal" data-bs-target="#inviteBid" class="btn logIn Edit btn-res" type="submit"><span> {{ 'Invite' | translate }} <span class="clear-res">{{ 'Sellers' | translate }}</span></span></button>
+                        </span>
+                        <!-- <span class="seeAll-Publish" *ngIf="singleData.is_payed != 1">
+                            <button class="btn getStarted" type="submit" (click)="edit(singleData.id)"><span> {{ 'ReLaunch' | translate }}</span></button>
+                        </span> -->
+                        
+                    </span>
+                </h2>
+                <h3>
+                    <span class="bid-type">
+                        {{singleData.type.name}}
+                    </span>
+                    <span class="location-bid">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13.3" height="19" viewBox="0 0 13.3 19">
+                            <path id="Icon_material-location-on" data-name="Icon material-location-on" d="M14.15,3A6.645,6.645,0,0,0,7.5,9.65C7.5,14.638,14.15,22,14.15,22S20.8,14.638,20.8,9.65A6.645,6.645,0,0,0,14.15,3Zm0,9.025A2.375,2.375,0,1,1,16.525,9.65,2.376,2.376,0,0,1,14.15,12.025Z" transform="translate(-7.5 -3)" fill="#1e805d"/>
+                          </svg>
+                          {{singleData.region.name}}                                 
+                    </span>
+                    <span class="public-bids" *ngIf="singleData?.status === 1">{{ 'active' | translate }}</span>
+                    <span class="public-bids" *ngIf="singleData?.status === 2">{{ 'closed' | translate }}</span>
+                    <span class="closed" *ngIf="singleData?.status === 3">{{ 'canceled' | translate }}</span>
+                </h3>
+                <div class="date-bid">
+                    <div class="row">
+                        <h2 class="col-md-10">{{ 'PublishedDate' | translate }}
+                            <span class="published">
+                               {{singleData.createdAt}}
+                            </span>
+                            <span class="Lastdateforapplying">
+                                {{ 'Lastdateforapplying' | translate }}
+                                <span class="published">
+                                    {{singleData.endDate}}
+                                </span>
+                            </span>
+                        </h2>
+                        
+                        <div class="col-md-2" *ngIf="singleData.differentDateTime != null">
+                            <span class="hours-bids">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20.842" height="20.842" viewBox="0 0 20.842 20.842">
+                                    <path id="Icon_ionic-md-timer" data-name="Icon ionic-md-timer" d="M12.639,19.588A1.157,1.157,0,1,0,13.8,18.43,1.161,1.161,0,0,0,12.639,19.588Zm0-16.213V8h2.315V5.785A8.1,8.1,0,1,1,5.69,13.8a8.019,8.019,0,0,1,1.829-5.12L13.8,14.953l1.633-1.633L7.553,5.449v.025a10.4,10.4,0,1,0,6.243-2.1ZM20.745,13.8a1.157,1.157,0,1,0-1.157,1.157A1.161,1.161,0,0,0,20.745,13.8Zm-13.9,0A1.157,1.157,0,1,0,8,12.639,1.161,1.161,0,0,0,6.847,13.8Z" transform="translate(-3.375 -3.375)" fill="#c00"/>
+                                </svg>
+                                {{singleData.differentDateTime}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h4 class="col-md-9 " >
+                        <span class="condition">{{ 'Condition' | translate }}</span>
+                        <span *ngIf="singleData.attaches.length != 0">
+                            <span class="attachment-bids" *ngFor="let item of singleData.attaches">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17.008" height="17.754" viewBox="0 0 17.008 17.754">
+                                    <path id="Path_1371" data-name="Path 1371" d="M19.8,11.854l-7.47,7.47a4.88,4.88,0,0,1-6.9-6.9l7.47-7.47a3.253,3.253,0,1,1,4.6,4.6l-7.478,7.47a1.627,1.627,0,1,1-2.3-2.3l6.9-6.893" transform="translate(-3.5 -3.5)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                </svg>
+                                {{item.name}}
+                            </span>
+                            <span class="downlod-boids">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.5" viewBox="0 0 19.5 19.5">
+                                    <path id="Path_1372" data-name="Path 1372" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m4-5,5,5m0,0,5-5m-5,5V5" transform="translate(-4.25 -4.25)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                  </svg>                                  
+                            </span>
+                        </span>
+                        <span *ngIf="singleData.attaches.length === 0">
+                            <span class="attachment-bids">
+                                <a> 
+                                     {{ 'NotFound' | translate }}
+                                </a>
+                            </span>
+                        </span>
+                    </h4>
+                    <div class="col-md-3 chooseSeller chooseWon" style="margin-bottom: 10px;" *ngIf="singleData?.status != 1 && singleData.is_payed === 1">
+                        <button class="btn getStarted " data-bs-toggle="modal" data-bs-target="#chooseSeller" *ngIf="singleData.acceptedOffer === null" type="submit"><span>{{ 'ChooseWonSeller' | translate }}</span></button>
+                        <button class="btn getStarted " *ngIf="singleData.acceptedOffer != null" type="submit" (click)="chat(singleData)"><span>{{ 'ContactWonSeller' | translate }}</span></button>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div class="Attatchements">
+                <div class="row">
+                    <h4 class="col-md-12">
+                        <span class="condition" > {{ 'InvitedSellers' | translate }}</span>
+                        <span class="invalidSeller" *ngIf="singleData.invitations.length != 0">
+                            <span class="attachment-bids" *ngFor="let item of singleData.invitations">
+                                {{item.key}}
+                            </span>
+                        </span>
+                        <span class="invalidSeller" *ngIf="singleData.invitations.length === 0">
+                            <span class="attachment-bids" >
+                                {{ 'NotFound' | translate }}
+                            </span>
+                        </span>
+                        
+                    </h4>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="chat-component">
+            <h3>
+                 <!-- <span class="number-noti"><span>2</span></span>  -->
+                <span class="number-message">{{lengthAllComment}} {{ 'Message' | translate }}</span>
+                <span class="AddComment" *ngIf="!showComment && !emptyPageComment">
+                    <button class="btn getStarted btn-Coment" type="submit" (click)="showNewComment()"><span>{{ 'AddComent' | translate }}</span></button>
+                </span>
+            </h3>
+            <div class="ShowAddComment" *ngIf="showComment">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="row" [formGroup]= "formGroupNewComment" (ngSubmit)="submitNewComment()">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <input class="form-group" class="form-control" type="text" placeholder="Type your comment" formControlName="comment">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn logIn btn-reply" *ngIf="!newCommentLoading" type="submit"><span> {{ 'Add' | translate }}</span></button>
+                                <a class="loading" *ngIf="newCommentLoading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!emptyPageComment && !loadingPageComment">
+                <div class="col-md-12" *ngFor="let item of bidComment">
+                    <div class="card-noti cardReply">
+                        <div class="buyerComment">
+                            <h3>{{item.userName}}
+                            </h3>
+                            <div class="row">
+                                <p class="col-md-10"> {{item.comment}} </p>
+                                <div class="col-md-2" *ngIf="!item.isCommit">
+                                    <button class="btn logIn btn-reply" type="submit" (click)="showReplay(item)"><span>{{ 'Reply' | translate }}</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="replyComment" *ngIf="item.isCommit">
+                            <form class="row" [formGroup]= "formGroup" (ngSubmit)="submit(item)">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <input class="form-group" class="form-control" type="text" placeholder="{{ 'Typeyourcomment' | translate }}" formControlName="comment">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn logIn btn-reply" *ngIf="!item.replayLoading" type="submit"><span>{{ 'Reply' | translate }}</span></button>
+                                    <a class="loading" *ngIf="item.replayLoading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="buyerReplay" *ngIf="item.replay.length != 0">
+                            <div class="allReply" *ngFor="let reply of item.replay">
+                                <h3>{{reply.userName}}</h3>
+                                    <div class="row">
+                                        <p class="col-md-10"> 
+                                            {{reply.comment}}
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+    
+                <div class="pagination" >
+                    <ul id="pagination" *ngIf="numComment > 1">
+                        <li (click)="moveTo(pageComment-1)">
+                            <a  class="previoesPaginate">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                    <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li *ngFor="let in of ArrComment(numComment).fill(1) | slice: 0 : 20 ; let i = index " ><a (click)="moveTo(i+1)" [ngClass]="{'active': currentPageComment === i+1}">{{i+1}}</a></li>
+                        <li (click)="moveTo(pageComment+1)">
+                            <a class="nextPaginate">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                    <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                </svg>
+                            </a>
+                        </li>
+                      </ul> 
+                </div>
+            </div>
+            <app-loading-page *ngIf="loadingPageComment"></app-loading-page>
+            <div class="noAvailable" *ngIf="emptyPageComment">
+                <h3> {{ 'NoAvailableComment' | translate }}</h3>
+                <p>{{ 'SorryComment' | translate }}</p>
+                <button class="btn getStarted" type="submit" (click)="showNewComment()"><span>{{ 'AddComent' | translate }}</span></button>
+            </div>
+        </div>
+        
+        <div class="bid_offer" *ngIf="singleData.is_payed === 0">
+    
+            <h2> {{ 'BidOffers' | translate }}<span *ngIf="!emptyPageOffer">{{lengthAllOffer}} {{ 'Offers' | translate }}</span></h2>
+            <div class="noAvailable" *ngIf="emptyPageOffer && singleData?.status==1">
+                <h3> {{ 'NoAvailableOffer' | translate }}</h3>
+                <p>{{ 'SorryOffers' | translate }}</p>
+                <button data-bs-toggle="modal" data-bs-target="#inviteBid" class="btn getStarted" type="submit"><span> {{ 'InviteSellers' | translate }}</span></button>
+            </div>
+            
+            <div class="row ">
+                <div class="allSelerOffer" *ngIf="singleData?.status != 1">
+                    <div class="overFlowOffer" >
+                        <div class="noAvailable">
+                            <h3> {{ 'Yourbidisclosed' | translate }}</h3>
+                            <p> {{ 'SorryClosed' | translate }}</p>
+                            <button class="btn getStarted" type="submit" (click)="payNow()" *ngIf="!payLoading"><span> {{ 'PayNow' | translate }}</span></button>
+                            <a class="loading" *ngIf="payLoading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 " *ngFor="let item of bidOffer">
+                        <div class="">
+                            <p class="pricePublic" *ngIf="singleData?.is_private === 0">{{ 'thePrice' | translate }} {{item?.price}} </p>
+                            <span class="date-offer">{{item.cratedAt}}</span>
+                            <h5 class="text-offer">{{ 'Sellernumber' | translate }} {{item.id}} {{ 'postedanewoffer' | translate }}</h5>
+                        </div>
+                    </div>
+                    <div class="pagination" >
+                        <ul id="pagination" *ngIf="numOffer > 1">
+                            <li (click)="moveTo(pageOffer-1)">
+                                <a  class="previoesPaginate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                        <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li *ngFor="let in of Arr(numOffer).fill(1) | slice: 0 : 20 ; let i = index " ><a (click)="moveTo(i+1)" [ngClass]="{'active': currentPageOffer === i+1}">{{i+1}}</a></li>
+                            <li (click)="moveTo(pageOffer+1)">
+                                <a class="nextPaginate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                        <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                    </svg>
+                                </a>
+                            </li>
+                          </ul> 
+                    </div>
+                </div>
+                <div class="row allSelerOffer" *ngIf="singleData?.status === 1">
+                    <div class="col-md-4 " *ngFor="let item of bidOffer">
+                        <div class="">
+                            <p class="pricePublic" *ngIf="singleData?.is_private === 0">{{ 'thePrice' | translate }} {{item?.price}} </p>
+                            <span class="date-offer">{{item.cratedAt}}</span>
+                            <h5 class="text-offer">{{ 'Sellernumber' | translate }} {{item.id}} {{ 'postedanewoffer' | translate }}</h5>
+                        </div>
+                    </div>
+                    <div class="pagination" >
+                        <ul id="pagination" *ngIf="numOffer > 1">
+                            <li (click)="moveTo(pageOffer-1)">
+                                <a  class="previoesPaginate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                        <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li *ngFor="let in of Arr(numOffer).fill(1) | slice: 0 : 20 ; let i = index " ><a (click)="moveTo(i+1)" [ngClass]="{'active': currentPageOffer === i+1}">{{i+1}}</a></li>
+                            <li (click)="moveTo(pageOffer+1)">
+                                <a class="nextPaginate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                        <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                    </svg>
+                                </a>
+                            </li>
+                          </ul> 
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="bid_offer" *ngIf="singleData.is_payed === 1">
+            <div class="row allSelerOffer" *ngIf="!loadingPageOffer">
+                <h2> {{ 'BidOffers' | translate }}<span *ngIf="!emptyPageOffer">{{lengthAllOffer}} {{ 'Offers' | translate }}</span></h2>
+                <div class="noAvailable" *ngIf="emptyPageOffer && singleData?.status != 1">
+                    <h3> {{ 'NoAvailableOffer' | translate }}</h3>
+                    <p>{{ 'SorryOffers' | translate }}</p>
+                    <button class="btn getStarted" type="submit" (click)="edit(singleData.id)"><span>{{ 'RePublish' | translate }}</span></button>
+                </div>
+                <div class="row offerPayed" *ngIf="!emptyPageOffer && singleData?.status != 1">
+                    <div class="col-md-12" *ngFor="let item of bidOffer">
+                        <div class="card-noti sellerCon">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img class="bidOfferImage" src="{{item?.seller?.companyLogo}}">
+                                </div>
+                                <div class="col-md-11">
+                                    <h3 style="margin-bottom: 0px !important;">
+                                        <span>{{item?.seller?.companyName}}</span>
+                                        <span class="date-message">#{{item?.seller?.id}}</span>
+                                    </h3>
+                                    <span>{{item?.seller?.name}}</span>
+                                    <h5 class="webOffer"><a href="{{item?.seller?.webSite}}" target="_blank">{{item?.seller?.webSite}}</a></h5>
+                                    <span class="offer-price">{{ 'SAR' | translate }} {{item.price}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h4 class="conditionSeller col-md-10" >
+                                    <span class="condition">{{ 'Attatchements' | translate }}</span>
+                                    <span *ngIf="item.attachNormal.length != 0">
+                                        <span class="attachment-bids" *ngFor="let attach of item.attachNormal">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17.008" height="17.754" viewBox="0 0 17.008 17.754">
+                                                <path id="Path_1371" data-name="Path 1371" d="M19.8,11.854l-7.47,7.47a4.88,4.88,0,0,1-6.9-6.9l7.47-7.47a3.253,3.253,0,1,1,4.6,4.6l-7.478,7.47a1.627,1.627,0,1,1-2.3-2.3l6.9-6.893" transform="translate(-3.5 -3.5)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                            </svg>
+                                           {{attach.name}}
+                                        </span>
+                                        <span class="downlod-boids">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.5" viewBox="0 0 19.5 19.5">
+                                                <path id="Path_1372" data-name="Path 1372" d="M23,17v4a2,2,0,0,1-2,2H7a2,2,0,0,1-2-2V17m4-5,5,5m0,0,5-5m-5,5V5" transform="translate(-4.25 -4.25)" fill="none" stroke="#1e805d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                                                </svg>                                  
+                                        </span>
+                                    </span>
+                                    <span *ngIf="item.attachNormal.length === 0">
+                                        <span class="attachment-bids">
+                                            {{ 'NotFound' | translate }}
+                                        </span>
+                                    </span>
+                                    
+                                </h4>
+                                <div class="col-md-2"*ngIf="item?.seller?.id === singleData?.acceptedOffer?.seller?.id">
+                                    <button class="btn logIn btn-reply" type="submit" (click)="chat(singleData)"><span> {{ 'ContactSeller' | translate }}</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="pagination" >
+                        <ul id="pagination" *ngIf="numAllSeller > 1">
+                            <li (click)="moveTo(pageAllSeller-1)">
+                                <a  class="previoesPaginate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                        <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li *ngFor="let in of Arr(numAllSeller).fill(1) | slice: 0 : 20 ; let i = index " ><a (click)="moveTo(i+1)" [ngClass]="{'active': currentPageAllSeller === i+1}">{{i+1}}</a></li>
+                            <li (click)="moveTo(pageAllSeller+1)">
+                                <a class="nextPaginate">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8.372" height="14.828" viewBox="0 0 8.372 14.828">
+                                        <path id="Path_1370" data-name="Path 1370" d="M225,6l5.929,5.929a.1.1,0,0,1,0,.141L225,18" transform="translate(-223.586 -4.586)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                                    </svg>
+                                </a>
+                            </li>
+                          </ul> 
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="noti bidsPage" *ngIf="loadingPage">
+    <div class="container">
+        <div class="row">
+            <app-loading-page ></app-loading-page>
+        </div>
+    </div>
+</section>  
+<div class="modal fade" id="closeBid" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content"> 
+            <div class="modal-body bodyPrototype">
+                <span class="cloes" data-bs-dismiss="modal" aria-label="Close">
+                    <svg id="Circle_Button_" data-name="Circle Button " xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                        <rect id="Area_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="48" height="48" rx="24" fill="#f2f4f8"/>
+                        <g id="Icon_" data-name="Icon " transform="translate(14 14)">
+                          <rect id="Area_ICON:feather_x_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [ICON:feather/x][SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="20" height="20" fill="rgba(253,73,198,0.35)" opacity="0"/>
+                          <g id="Icon" transform="translate(-1 -1)">
+                            <line id="Line" x1="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                            <line id="Line-2" data-name="Line" x2="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                          </g>
+                        </g>
+                      </svg>
+                </span>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6" style="text-align: center;">
+                        <h1>{{ 'BidclosingReason' | translate }}</h1>
+                        <p>{{ 'closeReason' | translate }}</p>
+                        <form [formGroup]= "formGroupReasons" (ngSubmit)="submitClosed()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <select class="form-control" id="exampleFormControlSelect1" formControlName="cancelReason_id">
+                                            <option [ngValue]="null" [selected]="true" >{{ 'Ichangedmymind' | translate }}</option>
+                                            <option *ngFor="let item of reasons" [ngValue]="item.id">{{item.name}}</option>
+                                          </select>
+                                          <span class="down"><i class="fas fa-angle-down"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <div class="Verify">
+                                        <button class="btn getStarted ng-inserted" type="submit" *ngIf="!ResonsLoading"><span>{{ 'CloseBid' | translate }}</span></button>
+                                        <a class="loading " *ngIf="ResonsLoading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="inviteBid" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content"> 
+            <div class="modal-body bodyPrototype">
+                <span class="cloes" data-bs-dismiss="modal" aria-label="Close">
+                    <svg id="Circle_Button_" data-name="Circle Button " xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                        <rect id="Area_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="48" height="48" rx="24" fill="#f2f4f8"/>
+                        <g id="Icon_" data-name="Icon " transform="translate(14 14)">
+                          <rect id="Area_ICON:feather_x_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [ICON:feather/x][SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="20" height="20" fill="rgba(253,73,198,0.35)" opacity="0"/>
+                          <g id="Icon" transform="translate(-1 -1)">
+                            <line id="Line" x1="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                            <line id="Line-2" data-name="Line" x2="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                          </g>
+                        </g>
+                      </svg>
+                </span>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8" style="text-align: center;">
+                        <h1>{{ 'InviteSellerstoBid' | translate }}</h1>
+                        <p>{{ 'InviteSellersbyEmail' | translate }}</p>
+                        <form [formGroup]= "formGroupInvite" (ngSubmit)="submitInvite()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <mat-form-field class="example-chip-list form-control" appearance="fill">
+                                            <mat-chip-list #chipList aria-label="selecteion2">
+                                              <mat-chip *ngFor="let invitation of invitations" [selectable]="selectable"
+                                                       [removable]="removable" (removed)="remove(invitation)">
+                                                {{invitation}}
+                                                <button matChipRemove *ngIf="removable">
+                                                  <mat-icon><i class="fa fa-times"></i></mat-icon>
+                                                </button>
+                                              </mat-chip>
+                                              <input 
+                                              placeholder="{{ 'BidSellerEmailsPhones' | translate }}"
+                                                     [matChipInputFor]="chipList"
+                                                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                     [matChipInputAddOnBlur]="addOnBlur"
+                                                     (matChipInputTokenEnd)="add($event)">
+                                            </mat-chip-list>
+                                          </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="Verify">
+                                        <button class="btn getStarted ng-inserted" type="submit" *ngIf="!inviteLoading"><span>{{ 'Invite' | translate }}</span></button>
+                                        <a class="loading " *ngIf="inviteLoading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="chooseSeller" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content"> 
+            <div class="modal-body bodyPrototype">
+                <span class="cloes" data-bs-dismiss="modal" aria-label="Close">
+                    <svg id="Circle_Button_" data-name="Circle Button " xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                        <rect id="Area_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="48" height="48" rx="24" fill="#f2f4f8"/>
+                        <g id="Icon_" data-name="Icon " transform="translate(14 14)">
+                          <rect id="Area_ICON:feather_x_SIZE:MEDIUM_STATE:DEFAULT_STYLE:STYLE2_" data-name="Area [ICON:feather/x][SIZE:MEDIUM][STATE:DEFAULT][STYLE:STYLE2]" width="20" height="20" fill="rgba(253,73,198,0.35)" opacity="0"/>
+                          <g id="Icon" transform="translate(-1 -1)">
+                            <line id="Line" x1="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                            <line id="Line-2" data-name="Line" x2="10" y2="10" transform="translate(6 6)" fill="none" stroke="#010131" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.667"/>
+                          </g>
+                        </g>
+                      </svg>
+                </span>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6" style="text-align: center;">
+                        <h1>{{ 'Congratulations' | translate }}</h1>
+                        <p>{{ 'closedwon' | translate }}</p>
+                        <form [formGroup]= "formGroupSeller" (ngSubmit)="submitChooes()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <select class="form-control" id="exampleFormControlSelect1" formControlName="offer_id">
+                                            <option [ngValue]="null" [selected]="true" > {{ 'Choosesellername' | translate }}</option>
+                                            <option *ngFor="let item of bidOffer" [ngValue]="item.id">{{item.seller.name}}</option>
+                                          </select>
+                                          <span class="down"><i class="fas fa-angle-down"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <div class="Verify">
+                                        <button class="btn getStarted ng-inserted" type="submit" *ngIf="!SellerLoading"><span>{{ 'ChooseSeller' | translate }}</span></button>
+                                        <a class="loading " *ngIf="SellerLoading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template >
+    <div class="modal-header">
+       <h4 class="modal-title pull-left">Modal</h4>
+       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">×</span>
+       </button>
+    </div>
+    <div class="modal-body">
+       <div class="" >
+            <div class="noAvailable">
+                <h3> {{ 'Yourbidisclosed' | translate }}</h3>
+                <p> {{ 'SorryClosed' | translate }}</p>
+                <button class="btn getStarted" type="submit" (click)="payNow()" *ngIf="!payLoading"><span> {{ 'PayNow' | translate }}</span></button>
+                <a class="loading" *ngIf="payLoading"> <img src="../../../../assets/images/lodingButton.png" class="fa-spin"></a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+       <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+    </div>
+ </ng-template>
